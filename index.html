@@ -1276,21 +1276,55 @@
     }
     var synth = window.speechSynthesis;
     var chosenVoice = null;
+    // Se prefiere una voz latinoamericana; si no hay, cualquier voz en español.
+    var VOCES_PREFERIDAS = ['es-py', 'es-ar', 'es-419', 'es-mx', 'es-us', 'es-co', 'es-cl', 'es-uy'];
     function loadVoices(){
-      var voices = synth.getVoices();
-      chosenVoice = voices.find(function(v){ return /^es/i.test(v.lang); }) || null;
+      var enEspanol = synth.getVoices().filter(function(v){ return /^es/i.test(v.lang); });
+      chosenVoice = null;
+      for (var i = 0; i < VOCES_PREFERIDAS.length && !chosenVoice; i++) {
+        var buscada = VOCES_PREFERIDAS[i];
+        chosenVoice = enEspanol.filter(function(v){
+          return v.lang.toLowerCase().replace('_', '-') === buscada;
+        })[0] || null;
+      }
+      if (!chosenVoice) chosenVoice = enEspanol[0] || null;
     }
     loadVoices();
     if ('onvoiceschanged' in synth) synth.addEventListener('voiceschanged', loadVoices);
 
-    function sentencesFrom(text){
-      var parts = text.replace(/\s+/g, ' ').trim().split(/([.!?]+[)"']*\s+)/);
-      var out = [];
-      for (var i = 0; i < parts.length; i += 2) {
-        var seg = ((parts[i] || '') + (parts[i + 1] || '')).trim();
-        if (seg) out.push(seg);
+    // Abreviaturas frecuentes en el texto: el punto que las sigue no termina la oración.
+    var ABREVIATURAS = ['art', 'arts', 'inc', 'incs', 'nro', 'nros', 'num', 'núm', 'pag', 'pág',
+                        'cap', 'caps', 'sec', 'secs', 'parr', 'párr', 'etc', 'ej', 'aprox',
+                        'sr', 'sra', 'dr', 'dra', 'lic', 'ing', 'vs', 'ss'];
+    var LARGO_MINIMO = 25;
+
+    function cierraOracion(seg){
+      var s = seg.replace(/[)\]"'”»]+$/, '');
+      var m = s.match(/([A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+)\.$/);
+      if (m) {
+        if (m[1].length === 1) return false;                              // inicial suelta: "J."
+        if (ABREVIATURAS.indexOf(m[1].toLowerCase()) !== -1) return false; // "Art.", "arts.", "pág."
       }
-      if (!out.length && text.trim()) out.push(text.trim());
+      return true;
+    }
+
+    function sentencesFrom(text){
+      var limpio = text.replace(/\s+/g, ' ').trim();
+      if (!limpio) return [];
+      var parts = limpio.split(/([.!?]+[)"']*\s+)/);
+      var out = [];
+      var buffer = '';
+      for (var i = 0; i < parts.length; i += 2) {
+        buffer += (parts[i] || '') + (parts[i + 1] || '');
+        var seg = buffer.trim();
+        if (!seg) { buffer = ''; continue; }
+        // Se sigue acumulando si el corte cae tras una abreviatura o deja un fragmento muy corto.
+        if (!cierraOracion(seg) || seg.length < LARGO_MINIMO) continue;
+        out.push(seg);
+        buffer = '';
+      }
+      if (buffer.trim()) out.push(buffer.trim());
+      if (!out.length) out.push(limpio);
       return out;
     }
 
@@ -1349,11 +1383,12 @@
     var gen = 0;
     function cancelSpeech(){ gen++; synth.cancel(); }
 
+    // Detiene la lectura pero deja la barra abierta: la clase tts-open acompaña a la barra,
+    // no a la reproducción, para que los botones flotantes no queden tapados por ella.
     function stopAll(){
       cancelSpeech();
       clearHighlight();
       state.playing = false;
-      document.body.classList.remove('tts-open');
       updateUI();
     }
 
@@ -1361,6 +1396,7 @@
       stopAll();
       state.index = -1;
       bar.hidden = true;
+      document.body.classList.remove('tts-open');
       updateUI();
     }
 
@@ -1411,9 +1447,13 @@
     btnRate.addEventListener('click', function(){
       rateIdx = (rateIdx + 1) % RATES.length;
       btnRate.textContent = RATES[rateIdx] + '×';
-      if (synth.speaking) { cancelSpeech(); speakNext(); }
+      // synth.speaking sigue en true durante la pausa: si está pausado no se reanuda,
+      // la velocidad nueva entra al reanudar. Solo se reinicia si está sonando.
+      if (state.playing && synth.speaking && !synth.paused) { cancelSpeech(); speakNext(); }
     });
     btnClose.addEventListener('click', closeBar);
+    // Chrome puede seguir hablando después de dejar la página.
+    window.addEventListener('pagehide', function(){ synth.cancel(); });
     btnToggle.addEventListener('click', function(){
       if (bar.hidden) playBlock(state.index >= 0 ? state.index : 0);
       else closeBar();
