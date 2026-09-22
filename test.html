@@ -220,17 +220,6 @@
         <span class="track"></span><span class="knob"></span>
       </label>
     </div>
-    <div class="toggle-row">
-      <div>
-        <div>Mezclar orden de las preguntas</div>
-        <div class="desc">Que no aparezcan siempre en el mismo orden (Art. 1, 2, 3...).</div>
-      </div>
-      <label class="switch">
-        <input type="checkbox" id="opt-shuffle-q" checked>
-        <span class="track"></span><span class="knob"></span>
-      </label>
-    </div>
-
     <button class="btn" id="start-btn">Empezar test</button>
   </section>
 
@@ -646,8 +635,7 @@ document.getElementById('custom-count-input').addEventListener('input', function
 
 document.getElementById('start-btn').addEventListener('click', function(){
   optInstant = document.getElementById('opt-instant').checked;
-  const shuffleQ = document.getElementById('opt-shuffle-q').checked;
-  activeSet = buildSet(selectedCount, shuffleQ);
+  activeSet = buildSet(selectedCount, true); // el orden de las preguntas siempre se mezcla
   startQuiz();
 });
 
