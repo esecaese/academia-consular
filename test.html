@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test de Autoevaluación — Convención de Viena (Arts. 1 al 27)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:        #f6f3ec;
+    --paper:     #fffdf8;
+    --ink:       #22282e;
+    --ink-soft:  #414a52;
+    --ink-dim:   #6d757d;
+    --rule:      #e3ddcf;
+    --rule-soft: #eee9dd;
+    --accent:    #8a5a2b;
+    --accent-bg: #f4e6ce;
+    --blue:      #2f6180;
+    --blue-bg:   #eaf1f6;
+    --good:      #2f7a4f;
+    --good-bg:   #e5f3ea;
+    --bad:       #a83e3e;
+    --bad-bg:    #f7e6e2;
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#15171a; --paper:#1c1f22; --ink:#e9e5dd; --ink-soft:#c6c2b9; --ink-dim:#8f8b83;
+      --rule:#34383c; --rule-soft:#26292c; --accent:#d9a566; --accent-bg:#2a2419;
+      --blue:#8ab6d0; --blue-bg:#1b2429; --good:#7fce9e; --good-bg:#12241a;
+      --bad:#e08585; --bad-bg:#2c1e1c;
+    }
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--serif); font-size:18px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sans{ font-family:var(--sans); }
+
+  header.masthead{ max-width:720px; margin:0 auto; padding:44px 22px 20px; }
+  .back-link{
+    font-family:var(--sans); font-size:.85rem; font-weight:600; color:var(--ink-dim);
+    text-decoration:none; display:inline-block; margin-bottom:18px;
+  }
+  .back-link:hover{ color:var(--accent); }
+  .eyebrow{
+    font-family:var(--sans); font-size:12px; font-weight:600;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 14px;
+  }
+  h1{
+    font-size:clamp(1.7rem, 1.3rem + 2vw, 2.5rem);
+    line-height:1.15; font-weight:700; letter-spacing:-.01em; margin:0 0 14px;
+  }
+  .subtitle{ font-size:1.05rem; color:var(--ink-soft); margin:0; }
+
+  main{ max-width:720px; margin:0 auto; padding:10px 22px 90px; }
+
+  .card{
+    background:var(--paper); border:1px solid var(--rule); border-radius:12px;
+    padding:26px 24px; margin:20px 0;
+  }
+
+  /* ---------- Setup ---------- */
+  #setup label{
+    display:block; font-family:var(--sans); font-size:.82rem; font-weight:700;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--ink-dim); margin:20px 0 8px;
+  }
+  #setup label:first-of-type{ margin-top:0; }
+  .count-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .count-btn{
+    font-family:var(--sans); font-size:.92rem; font-weight:600; color:var(--ink-soft);
+    background:var(--bg); border:1px solid var(--rule); border-radius:8px;
+    padding:9px 16px; cursor:pointer;
+  }
+  .count-btn:hover{ border-color:var(--accent); color:var(--accent); }
+  .count-btn.active{ background:var(--accent-bg); border-color:var(--accent); color:var(--accent); }
+  .custom-count{ display:flex; align-items:center; gap:8px; margin-top:10px; }
+  .custom-count input{
+    width:80px; font-family:var(--sans); font-size:.92rem; padding:8px 10px;
+    border:1px solid var(--rule); border-radius:8px; background:var(--bg); color:var(--ink);
+  }
+  .toggle-row{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:12px 0; border-bottom:1px solid var(--rule-soft);
+    font-family:var(--sans); font-size:.94rem;
+  }
+  .toggle-row:last-of-type{ border-bottom:none; }
+  .toggle-row .desc{ color:var(--ink-dim); font-size:.82rem; margin-top:2px; }
+  .switch{
+    position:relative; width:44px; height:26px; flex:0 0 auto; cursor:pointer;
+  }
+  .switch input{ position:absolute; opacity:0; width:100%; height:100%; margin:0; cursor:pointer; }
+  .switch .track{
+    position:absolute; inset:0; background:var(--rule); border-radius:999px; transition:background .15s;
+  }
+  .switch .knob{
+    position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%;
+    background:var(--paper); box-shadow:0 1px 3px rgba(0,0,0,.3); transition:left .15s;
+  }
+  .switch input:checked ~ .track{ background:var(--accent); }
+  .switch input:checked ~ .knob{ left:21px; }
+
+  .btn{
+    font-family:var(--sans); font-size:.95rem; font-weight:700; cursor:pointer;
+    border-radius:999px; padding:13px 26px; border:1px solid var(--accent);
+    background:var(--accent); color:#fff; width:100%; margin-top:22px;
+  }
+  .btn:hover{ opacity:.92; }
+  .btn.secondary{
+    background:var(--paper); color:var(--ink-soft); border-color:var(--rule); width:auto;
+    margin-top:0; padding:11px 20px;
+  }
+  .btn.secondary:hover{ border-color:var(--accent); color:var(--accent); }
+  .btn-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:22px; }
+  .btn-row .btn{ flex:1 1 auto; margin-top:0; width:auto; }
+
+  /* ---------- Quiz ---------- */
+  #quiz{ display:none; }
+  .progress-wrap{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    font-family:var(--sans); font-size:.82rem; color:var(--ink-dim); margin-bottom:8px;
+  }
+  .progress-bar{
+    height:5px; background:var(--rule-soft); border-radius:99px; overflow:hidden; margin-bottom:22px;
+  }
+  .progress-fill{ height:100%; background:var(--accent); border-radius:99px; transition:width .25s; width:0%; }
+  .q-tag{
+    font-family:var(--sans); font-size:.72rem; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--accent); background:var(--accent-bg);
+    border-radius:4px; padding:3px 9px; display:inline-block; margin-bottom:12px;
+  }
+  .q-text{ font-size:1.18rem; font-weight:600; line-height:1.4; margin:0 0 20px; }
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .option{
+    font-family:var(--sans); font-size:.98rem; text-align:left; line-height:1.5;
+    background:var(--bg); border:1px solid var(--rule); border-radius:10px;
+    padding:13px 16px; cursor:pointer; color:var(--ink);
+  }
+  .option:hover{ border-color:var(--accent); }
+  .option.selected{ border-color:var(--accent); background:var(--accent-bg); }
+  .option.correct{ border-color:var(--good); background:var(--good-bg); color:var(--good); font-weight:600; }
+  .option.incorrect{ border-color:var(--bad); background:var(--bad-bg); color:var(--bad); font-weight:600; }
+  .option:disabled, .option.locked{ cursor:default; }
+  .feedback{
+    font-family:var(--sans); font-size:.9rem; margin-top:14px; padding:12px 14px;
+    border-radius:8px; display:none;
+  }
+  .feedback.show{ display:block; }
+  .feedback.ok{ background:var(--good-bg); color:var(--good); }
+  .feedback.no{ background:var(--bad-bg); color:var(--bad); }
+
+  /* ---------- Results ---------- */
+  #results{ display:none; }
+  .score-hero{ text-align:center; padding:10px 0 6px; }
+  .score-num{ font-size:3rem; font-weight:700; font-family:var(--sans); color:var(--accent); }
+  .score-label{ font-family:var(--sans); color:var(--ink-dim); font-size:.9rem; margin-top:4px; }
+  .review-item{ border-bottom:1px solid var(--rule); padding:16px 0; }
+  .review-item:last-child{ border-bottom:none; }
+  .review-item .rq{ font-weight:600; margin:0 0 8px; }
+  .review-item .ra{ font-family:var(--sans); font-size:.9rem; margin:0 0 4px; }
+  .review-item .ra.wrong{ color:var(--bad); }
+  .review-item .ra.right{ color:var(--good); }
+  .review-item .rart{
+    font-family:var(--sans); font-size:.72rem; font-weight:700; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-dim); margin-top:6px;
+  }
+
+  footer{
+    max-width:720px; margin:0 auto; padding:0 22px 40px;
+    font-family:var(--sans); font-size:.8rem; color:var(--ink-dim);
+  }
+
+  @media (max-width:640px){
+    body{ font-size:17px; }
+    header.masthead{ padding:30px 18px 16px; }
+    main{ padding:8px 18px 90px; }
+    .card{ padding:20px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a class="back-link" href="index.html">&larr; Volver a la guía</a>
+  <p class="eyebrow">Academia Diplomática y Consular "Carlos Antonio López"</p>
+  <h1>Test de autoevaluación</h1>
+  <p class="subtitle">Preguntas de opción múltiple sobre la Convención de Viena sobre Relaciones Consulares —
+  Artículos 1 al 27. Las opciones incorrectas se sortean al azar en cada intento.</p>
+</header>
+
+<main>
+
+  <!-- ============ SETUP ============ -->
+  <section id="setup" class="card">
+    <label>¿Cuántas preguntas querés responder?</label>
+    <div class="count-row" id="count-row"></div>
+    <div class="custom-count">
+      <span class="sans" style="font-size:.85rem; color:var(--ink-dim);">o una cantidad exacta:</span>
+      <input type="number" id="custom-count-input" min="1" placeholder="ej. 15">
+    </div>
+
+    <label>Opciones</label>
+    <div class="toggle-row">
+      <div>
+        <div>Corregir al instante</div>
+        <div class="desc">Mostrar si acertaste apenas elegís una opción (si no, te enterás recién al final).</div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="opt-instant" checked>
+        <span class="track"></span><span class="knob"></span>
+      </label>
+    </div>
+    <div class="toggle-row">
+      <div>
+        <div>Mezclar orden de las preguntas</div>
+        <div class="desc">Que no aparezcan siempre en el mismo orden (Art. 1, 2, 3...).</div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="opt-shuffle-q" checked>
+        <span class="track"></span><span class="knob"></span>
+      </label>
+    </div>
+
+    <button class="btn" id="start-btn">Empezar test</button>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section id="quiz" class="card">
+    <div class="progress-wrap">
+      <span id="progress-text">Pregunta 1 / 20</span>
+      <span id="score-text">Aciertos: 0</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+
+    <span class="q-tag" id="q-tag">Art. 1</span>
+    <p class="q-text" id="q-text"></p>
+    <div class="options" id="options"></div>
+    <div class="feedback" id="feedback"></div>
+
+    <div class="btn-row">
+      <button class="btn" id="next-btn" disabled>Siguiente</button>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+  <section id="results" class="card">
+    <div class="score-hero">
+      <div class="score-num" id="final-score">0 / 0</div>
+      <div class="score-label" id="final-pct">0% de aciertos</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn secondary" id="retry-same-btn">Repetir (mismas preguntas, opciones nuevas)</button>
+      <button class="btn secondary" id="retry-new-btn">Nuevo test</button>
+    </div>
+
+    <div id="review" style="margin-top:14px;"></div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Autoevaluación de repaso — Convención de Viena sobre Relaciones Consulares (1963), artículos 1 al 27.
+  No reemplaza el estudio del texto oficial del tratado.</p>
+</footer>
+
+<script>
+// ---------- Banco de preguntas (Arts. 1 a 27) ----------
+// Cada pregunta trae varias opciones incorrectas ("wrong"); en cada partida
+// se sortean solo algunas, así las opciones "trampa" cambian entre intentos.
+const QUESTIONS = [
+  { art:1, q:"Según el Art. 1, ¿cuáles son las cuatro clases de oficina consular?",
+    correct:"Consulado general, consulado, viceconsulado y agencia consular.",
+    wrong:[
+      "Embajada, consulado general, viceconsulado y agencia consular.",
+      "Consulado general, consulado, embajada y agencia consular.",
+      "Consulado, viceconsulado, agencia consular y misión diplomática.",
+      "Consulado general, vicecónsul, agente consular y cónsul honorario.",
+      "Consulado general, consulado, agencia consular y legación." ]},
+  { art:1, q:"¿Qué significa 'circunscripción consular'?",
+    correct:"El territorio atribuido a una oficina consular para el ejercicio de sus funciones.",
+    wrong:[
+      "El edificio donde funciona la oficina consular.",
+      "El conjunto de funcionarios de carrera de una oficina.",
+      "El territorio de todo el Estado receptor.",
+      "La zona donde vive el jefe de oficina.",
+      "El área diplomática protegida alrededor del consulado." ]},
+  { art:1, q:"¿Quién queda incluido dentro de la definición de 'funcionario consular'?",
+    correct:"Toda persona, incluido el jefe de oficina, encargada del ejercicio de funciones consulares.",
+    wrong:[
+      "Solo el jefe de la oficina consular.",
+      "Todos menos el jefe de oficina consular.",
+      "Solo el personal administrativo y técnico.",
+      "Solo el personal de servicio doméstico.",
+      "Cualquier persona empleada por el consulado, sin excepción." ]},
+  { art:1, q:"¿Qué diferencia hay entre 'miembros de la oficina consular' y 'miembros del personal consular'?",
+    correct:"Los miembros de la oficina consular incluyen al jefe; los del personal consular lo excluyen.",
+    wrong:[
+      "Son exactamente lo mismo, dos nombres para el mismo grupo.",
+      "Los miembros del personal consular incluyen al jefe; los de la oficina consular no.",
+      "Los miembros de la oficina consular son solo los honorarios.",
+      "Los miembros del personal consular son solo los empleados administrativos.",
+      "La diferencia depende de la nacionalidad de cada uno." ]},
+  { art:1, q:"¿Qué son los 'locales consulares' según el Art. 1?",
+    correct:"Los edificios o partes de ellos y el terreno contiguo que se usan exclusivamente para la oficina consular, sin importar el propietario.",
+    wrong:[
+      "Solo los edificios de propiedad del Estado que envía.",
+      "Cualquier inmueble alquilado por un funcionario consular, sea cual sea su uso.",
+      "Solo la residencia del jefe de oficina.",
+      "Los edificios donde vive el personal de servicio.",
+      "Cualquier oficina pública del Estado receptor cercana al consulado." ]},
+  { art:1, q:"¿Qué incluyen los 'archivos consulares'?",
+    correct:"Papeles, documentos, correspondencia, libros, películas, cintas, cifras, claves, ficheros y los muebles destinados a protegerlos.",
+    wrong:[
+      "Solo los documentos firmados por el jefe de oficina.",
+      "Solo la correspondencia con el Ministerio de Relaciones Exteriores.",
+      "Únicamente los pasaportes emitidos por el consulado.",
+      "Solo los libros de contabilidad de la oficina.",
+      "Solo los expedientes judiciales tramitados por el cónsul." ]},
+  { art:1, q:"¿A qué oficinas consulares se les aplica el Capítulo II de la Convención?",
+    correct:"A las dirigidas por funcionarios consulares de carrera.",
+    wrong:[
+      "A las dirigidas por funcionarios consulares honorarios.",
+      "A todas las oficinas, sin distinción.",
+      "Solo a los consulados generales.",
+      "Solo a las agencias consulares.",
+      "A ninguna; el Capítulo II regula a las misiones diplomáticas." ]},
+  { art:2, q:"¿Cómo se establecen las relaciones consulares entre dos Estados?",
+    correct:"Por consentimiento mutuo.",
+    wrong:[
+      "Automáticamente al establecer relaciones comerciales.",
+      "Por decisión unilateral del Estado que envía.",
+      "Solo mediante un tratado bilateral específico de comercio.",
+      "Por resolución de la Asamblea General de la ONU.",
+      "Automáticamente al abrir una embajada, sin necesidad de consentimiento." ]},
+  { art:2, q:"Si dos Estados rompen relaciones diplomáticas, ¿qué ocurre con las relaciones consulares?",
+    correct:"No se rompen automáticamente (ipso facto).",
+    wrong:[
+      "Se rompen automáticamente también.",
+      "Quedan suspendidas por un año como mínimo.",
+      "Pasan a depender obligatoriamente de un tercer Estado.",
+      "Se rompen solo si lo decide la ONU.",
+      "Se rompen, salvo que un tercer Estado las administre." ]},
+  { art:3, q:"Además de las oficinas consulares, ¿quién más puede ejercer funciones consulares según el Art. 3?",
+    correct:"Las misiones diplomáticas (embajadas).",
+    wrong:[
+      "Solo organismos internacionales.",
+      "Cualquier ciudadano acreditado sin nombramiento formal.",
+      "Ningún otro organismo puede hacerlo.",
+      "Las oficinas de turismo del Estado que envía.",
+      "Las cámaras de comercio binacionales." ]},
+  { art:4, q:"¿Qué tres datos de una oficina consular deben ser aprobados por el Estado receptor?",
+    correct:"Sede, clase y circunscripción consular.",
+    wrong:[
+      "Sede, nombre del jefe y presupuesto anual.",
+      "Clase, nacionalidad del personal y bandera.",
+      "Circunscripción, idioma oficial y horario de atención.",
+      "Sede, número de empleados y aranceles a cobrar.",
+      "Clase, circunscripción y color del edificio." ]},
+  { art:5, q:"Según el Art. 5, letra c, ¿cómo debe informarse el cónsul sobre la vida económica del Estado receptor?",
+    correct:"Por todos los medios lícitos.",
+    wrong:[
+      "Por cualquier medio, incluida la vigilancia encubierta.",
+      "Solo mediante pedidos formales al gobierno receptor.",
+      "Únicamente a través de la prensa oficial.",
+      "Por medio de informantes pagados por el consulado.",
+      "Solo si el Estado receptor lo autoriza expresamente por escrito." ]},
+  { art:5, q:"¿Cuál es la función consular considerada la 'función madre', de la que derivan casi todas las demás?",
+    correct:"Proteger en el Estado receptor los intereses del Estado que envía y de sus nacionales.",
+    wrong:[
+      "Expedir pasaportes y documentos de viaje.",
+      "Actuar como notario y oficial de registro civil.",
+      "Fomentar las relaciones comerciales y culturales.",
+      "Controlar buques y aeronaves de su bandera.",
+      "Representar a sus nacionales ante los tribunales locales." ]},
+  { art:5, q:"¿Es cerrada (taxativa) la lista de funciones consulares del Art. 5?",
+    correct:"No: la letra m deja la lista abierta a otras funciones que no prohíba el Estado receptor.",
+    wrong:[
+      "Sí, son exactamente esas trece funciones y ninguna más.",
+      "Sí, salvo que la ONU autorice expresamente una excepción.",
+      "No, cualquier función es válida sin ningún límite ni condición.",
+      "Solo puede ampliarse mediante una enmienda formal a la Convención.",
+      "Sí, y solo puede reducirse, nunca ampliarse." ]},
+  { art:6, q:"¿Cuándo puede un funcionario consular ejercer funciones fuera de su circunscripción?",
+    correct:"En circunstancias especiales y con el consentimiento del Estado receptor.",
+    wrong:[
+      "Nunca, está terminantemente prohibido por la Convención.",
+      "Libremente, sin necesidad de avisar a nadie.",
+      "Solo si lo autoriza la ONU.",
+      "Solo durante un conflicto armado.",
+      "Solo si lo pide otro consulado del mismo país." ]},
+  { art:7, q:"¿Qué diferencia al Art. 7 del Art. 8 de la Convención?",
+    correct:"El Art. 7 es ejercer funciones en un tercer Estado; el Art. 8 es ejercerlas por cuenta de un tercer Estado sin salir del Estado receptor.",
+    wrong:[
+      "Son exactamente la misma situación, descripta dos veces.",
+      "El Art. 7 habla de buques y el Art. 8 de aeronaves.",
+      "El Art. 7 aplica solo a cónsules honorarios y el Art. 8 solo a los de carrera.",
+      "El Art. 7 requiere aprobación de la ONU y el Art. 8 no.",
+      "El Art. 7 es para tiempos de paz y el Art. 8 para conflictos armados." ]},
+  { art:7, q:"Para que una oficina consular asuma funciones en un tercer Estado (Art. 7), ¿qué se requiere?",
+    correct:"Notificar a los Estados interesados y que ninguno se oponga expresamente.",
+    wrong:[
+      "Solo notificar al Estado que envía.",
+      "Aprobación previa de la ONU.",
+      "No se requiere ningún trámite especial.",
+      "Una nueva carta patente para cada Estado adicional.",
+      "El consentimiento expreso y por escrito de los tres Estados involucrados." ]},
+  { art:9, q:"¿Cuáles son las cuatro categorías de jefes de oficina consular?",
+    correct:"Cónsules generales, cónsules, vicecónsules y agentes consulares.",
+    wrong:[
+      "Embajadores, cónsules, vicecónsules y agregados.",
+      "Cónsules de carrera, honorarios, interinos y titulares.",
+      "Cónsules generales, ministros, secretarios y agregados.",
+      "Jefes de misión, cónsules, agregados y attachés.",
+      "Cónsules generales, cónsules, agentes consulares y attachés comerciales." ]},
+  { art:10, q:"¿Quién nombra al jefe de oficina consular y quién lo admite a ejercer sus funciones?",
+    correct:"El Estado que envía lo nombra; el Estado receptor lo admite.",
+    wrong:[
+      "El Estado receptor lo nombra y también lo admite.",
+      "Ambos Estados lo nombran conjuntamente.",
+      "La ONU lo nombra; el Estado receptor lo admite.",
+      "El Estado que envía lo nombra y lo admite, sin intervención del receptor.",
+      "Lo nombra el propio interesado y lo ratifica el Estado que envía." ]},
+  { art:11, q:"¿Qué datos debe contener la carta patente del jefe de oficina consular?",
+    correct:"Nombre completo, clase y categoría, circunscripción consular y sede de la oficina.",
+    wrong:[
+      "Solo el nombre y la nacionalidad del jefe.",
+      "El presupuesto anual de la oficina y la nómina de su personal.",
+      "El nombre del jefe y su fecha de nacimiento.",
+      "Solo la sede de la oficina y el idioma de trabajo.",
+      "El nombre del jefe, su currículum y sus estudios." ]},
+  { art:12, q:"¿Está el Estado receptor obligado a explicar por qué niega el exequátur?",
+    correct:"No, no está obligado a comunicar los motivos de la negativa.",
+    wrong:[
+      "Sí, siempre debe justificarlo por escrito.",
+      "Solo si el Estado que envía lo exige formalmente.",
+      "Sí, debe consultarlo previamente con la ONU.",
+      "Solo si la negativa ocurre después de una admisión provisional.",
+      "Sí, pero solo ante el Ministerio de Relaciones Exteriores del propio receptor." ]},
+  { art:12, q:"¿Puede el jefe de oficina consular iniciar funciones antes de recibir el exequátur?",
+    correct:"Por regla general no, salvo las excepciones de admisión provisional (Art. 13) y jefe interino (Art. 15).",
+    wrong:[
+      "Sí, siempre puede empezar de inmediato tras ser nombrado.",
+      "Solo si lo autoriza un tercer Estado.",
+      "Sí, pero únicamente para funciones administrativas menores.",
+      "No, bajo ninguna circunstancia, ni con admisión provisional.",
+      "Sí, con tal de presentar la carta patente." ]},
+  { art:13, q:"¿Qué es la 'admisión provisional' del Art. 13?",
+    correct:"Permite al jefe de oficina ejercer sus funciones mientras se tramita el exequátur, aplicándosele igual la Convención.",
+    wrong:[
+      "Es un exequátur temporal que dura exactamente 30 días.",
+      "Es la autorización para abrir una oficina de forma experimental.",
+      "Es el nombramiento provisional que hace el propio Estado receptor.",
+      "Es un permiso válido solo para funciones notariales.",
+      "Es la etapa previa al nombramiento, antes de elegir al jefe." ]},
+  { art:14, q:"Una vez admitido el jefe de oficina consular, ¿qué debe hacer el Estado receptor?",
+    correct:"Comunicarlo sin dilación a las autoridades de la circunscripción consular y facilitar su trabajo.",
+    wrong:[
+      "Nada, no tiene obligaciones adicionales.",
+      "Esperar 90 días antes de informar a las autoridades locales.",
+      "Notificarlo únicamente a la ONU.",
+      "Publicarlo en un diario de alcance internacional.",
+      "Esperar a que el jefe de oficina lo solicite por escrito." ]},
+  { art:15, q:"¿Cuándo puede actuar un jefe interino según el Art. 15?",
+    correct:"Cuando el puesto de jefe titular queda vacante o el jefe titular no puede ejercer sus funciones.",
+    wrong:[
+      "Únicamente durante las vacaciones del jefe titular.",
+      "Solo si lo pide expresamente el Estado receptor.",
+      "Nunca; esa figura no existe en la Convención.",
+      "Solo si el jefe titular es un funcionario honorario.",
+      "Solo mientras se tramita la carta patente del titular." ]},
+  { art:16, q:"¿Qué determina el orden de precedencia entre jefes de oficina consular de la misma categoría?",
+    correct:"La fecha de concesión del exequátur (o de la admisión provisional, si la hubo).",
+    wrong:[
+      "La antigüedad del cónsul en su carrera diplomática.",
+      "El orden alfabético del nombre del país que envía.",
+      "El tamaño de la circunscripción consular.",
+      "La fecha de nacimiento del funcionario.",
+      "El presupuesto de la oficina consular respectiva." ]},
+  { art:17, q:"Si un cónsul realiza actos diplomáticos autorizados por el Art. 17, ¿qué pasa con su estatus?",
+    correct:"Sigue siendo cónsul; no adquiere privilegios e inmunidades diplomáticos.",
+    wrong:[
+      "Automáticamente pasa a tener estatus diplomático pleno.",
+      "Pierde su condición de funcionario consular.",
+      "Solo puede hacerlo si renuncia primero a su cargo consular.",
+      "Adquiere inmunidad diplomática, pero solo para esos actos específicos.",
+      "Queda bajo el régimen de un tercer Estado." ]},
+  { art:18, q:"¿Puede una misma persona ser funcionario consular de dos Estados distintos a la vez?",
+    correct:"Sí, con el consentimiento del Estado receptor.",
+    wrong:[
+      "No, está prohibido por la Convención.",
+      "Sí, pero solo si ambos Estados son limítrofes.",
+      "Solo si se trata de dos organismos internacionales.",
+      "No, salvo autorización expresa de la ONU.",
+      "Sí, pero solo si renuncia a la nacionalidad de uno de los dos Estados." ]},
+  { art:19, q:"¿Cuáles son los tres límites a la libertad del Estado que envía para nombrar personal consular?",
+    correct:"El número razonable de miembros (Art. 20), la nacionalidad (Art. 22) y la posibilidad de declarar a alguien no aceptable (Art. 23).",
+    wrong:[
+      "El presupuesto, el idioma y la religión del personal.",
+      "La edad, el género y el nivel educativo del personal.",
+      "El tamaño del local, la bandera y el escudo.",
+      "La antigüedad, el rango militar y la nacionalidad del jefe.",
+      "El sueldo, la nacionalidad y la cantidad de familiares a cargo." ]},
+  { art:20, q:"¿Puede el Estado receptor limitar el número de miembros de una oficina consular?",
+    correct:"Sí, cuando no hay acuerdo expreso, puede exigir un número razonable y normal.",
+    wrong:[
+      "No, el Estado que envía decide libremente sin ningún límite.",
+      "Solo puede hacerlo la ONU.",
+      "Sí, pero solo puede reducirlo a un máximo fijo de cinco personas.",
+      "No, salvo que exista un conflicto armado.",
+      "Sí, pero solo si lo autoriza previamente un tercer Estado." ]},
+  { art:21, q:"¿Quién decide el orden de precedencia de los funcionarios dentro de una misma oficina consular?",
+    correct:"Lo decide el Estado que envía, y solo se comunica al Ministerio de Relaciones Exteriores del receptor.",
+    wrong:[
+      "Lo decide el Estado receptor.",
+      "Se fija automáticamente por antigüedad, según la Convención.",
+      "Lo decide la ONU en cada caso concreto.",
+      "Lo decide el jefe de oficina, sin avisar a nadie.",
+      "Se determina por sorteo entre los funcionarios." ]},
+  { art:22, q:"¿Puede nombrarse como funcionario consular a un nacional del Estado receptor?",
+    correct:"Solo con el consentimiento expreso del Estado receptor, que puede retirarlo en cualquier momento.",
+    wrong:[
+      "Nunca, está prohibido en cualquier circunstancia.",
+      "Sí, libremente y sin ningún requisito.",
+      "Solo si esa persona renuncia primero a su nacionalidad.",
+      "Solo si lo autoriza la ONU.",
+      "Sí, pero solo para cargos de personal de servicio." ]},
+  { art:23, q:"¿Qué significa que alguien sea declarado 'persona non grata'?",
+    correct:"Que el Estado receptor comunica que ya no acepta a esa persona, sin necesidad de dar motivos.",
+    wrong:[
+      "Que la persona cometió un delito comprobado judicialmente.",
+      "Que el propio Estado que envía la declaró no apta para el cargo.",
+      "Que la ONU prohíbe su ingreso al país.",
+      "Que pierde automáticamente su nacionalidad de origen.",
+      "Que debe pagar una multa antes de continuar en funciones." ]},
+  { art:24, q:"¿Qué debe notificarse al Ministerio de Relaciones Exteriores del Estado receptor según el Art. 24?",
+    correct:"Los nombramientos, llegadas, salidas definitivas y cambios de condición jurídica de los miembros de la oficina consular.",
+    wrong:[
+      "Solo los ascensos del personal diplomático.",
+      "Únicamente las vacaciones del personal consular.",
+      "Solo el presupuesto anual de la oficina.",
+      "Solo los cambios de bandera del edificio consular.",
+      "Solo las sanciones disciplinarias internas del consulado." ]},
+  { art:25, q:"¿Por qué motivos terminan las funciones de un miembro de la oficina consular?",
+    correct:"Por notificación del Estado que envía, por revocación del exequátur, o por notificación del receptor de que ya no lo considera miembro del personal.",
+    wrong:[
+      "Únicamente por renuncia voluntaria del propio funcionario.",
+      "Solo por decisión directa de la ONU.",
+      "Solo cuando cambia el gobierno del Estado que envía.",
+      "Solo por jubilación reglamentaria.",
+      "Solo si lo decide un tribunal internacional." ]},
+  { art:26, q:"Incluso en caso de conflicto armado, ¿qué debe garantizar el Estado receptor a los miembros de la oficina consular que terminan sus funciones?",
+    correct:"El plazo necesario y las facilidades para preparar su viaje y salir del país lo antes posible.",
+    wrong:[
+      "Ninguna facilidad especial mientras dure el conflicto armado.",
+      "Solo transporte aéreo gratuito hacia cualquier destino.",
+      "Asilo político permanente en el Estado receptor.",
+      "La confiscación de sus bienes personales antes de partir.",
+      "Un salvoconducto válido únicamente por 48 horas." ]},
+  { art:27, q:"Si se rompen las relaciones consulares entre dos Estados, ¿qué obligación tiene el Estado receptor respecto de los locales y archivos consulares?",
+    correct:"Debe respetarlos y protegerlos, incluso en caso de conflicto armado.",
+    wrong:[
+      "Puede confiscarlos sin ninguna restricción.",
+      "Debe destruirlos para evitar filtraciones de información.",
+      "Puede venderlos a un tercer Estado sin consentimiento del Estado que envía.",
+      "No tiene ninguna obligación al respecto.",
+      "Debe entregarlos de inmediato a la embajada más cercana, sin excepción." ]},
+  { art:27, q:"En caso de ruptura de relaciones, ¿a quién puede confiar el Estado que envía la custodia de sus locales, bienes y archivos consulares?",
+    correct:"A un tercer Estado que sea aceptable para el Estado receptor.",
+    wrong:[
+      "A cualquier tercer Estado, sin necesidad de aprobación del receptor.",
+      "Solo a un organismo internacional como la ONU.",
+      "A ningún otro Estado; deben quedar bajo custodia del propio receptor.",
+      "Solo a otra oficina consular del mismo Estado que envía, obligatoriamente.",
+      "A una empresa privada de seguridad contratada localmente." ]}
+];
+
+// ---------- Estado del test ----------
+let activeSet = [];      // preguntas elegidas para esta partida, con opciones ya armadas
+let current = 0;
+let score = 0;
+let answered = false;
+let optInstant = true;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildOptions(question){
+  const howManyWrong = Math.min(3, question.wrong.length);
+  const pickedWrong = shuffle(question.wrong).slice(0, howManyWrong);
+  const opts = shuffle([question.correct, ...pickedWrong]);
+  return opts;
+}
+
+function buildSet(count, shuffleQ){
+  const pool = shuffleQ ? shuffle(QUESTIONS) : QUESTIONS.slice();
+  const n = Math.max(1, Math.min(count, pool.length));
+  return pool.slice(0, n).map(q => ({
+    art: q.art, q: q.q, correct: q.correct,
+    options: buildOptions(q)
+  }));
+}
+
+// ---------- Setup UI ----------
+const COUNT_PRESETS = [10, 15, 20, 25, 30, QUESTIONS.length];
+const countRow = document.getElementById('count-row');
+let selectedCount = 20;
+
+COUNT_PRESETS.forEach(n => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'count-btn' + (n === selectedCount ? ' active' : '');
+  b.textContent = (n === QUESTIONS.length) ? 'Todas (' + n + ')' : String(n);
+  b.addEventListener('click', () => {
+    selectedCount = n;
+    document.getElementById('custom-count-input').value = '';
+    document.querySelectorAll('.count-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+  });
+  countRow.appendChild(b);
+});
+
+document.getElementById('custom-count-input').addEventListener('input', function(){
+  const v = parseInt(this.value, 10);
+  if (v > 0) {
+    selectedCount = Math.min(v, QUESTIONS.length);
+    document.querySelectorAll('.count-btn').forEach(x => x.classList.remove('active'));
+  }
+});
+
+document.getElementById('start-btn').addEventListener('click', function(){
+  optInstant = document.getElementById('opt-instant').checked;
+  const shuffleQ = document.getElementById('opt-shuffle-q').checked;
+  activeSet = buildSet(selectedCount, shuffleQ);
+  startQuiz();
+});
+
+// ---------- Quiz flow ----------
+function startQuiz(){
+  current = 0;
+  score = 0;
+  document.getElementById('setup').style.display = 'none';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('quiz').style.display = 'block';
+  renderQuestion();
+}
+
+function renderQuestion(){
+  answered = false;
+  const item = activeSet[current];
+  document.getElementById('progress-text').textContent = 'Pregunta ' + (current + 1) + ' / ' + activeSet.length;
+  document.getElementById('score-text').textContent = 'Aciertos: ' + score;
+  document.getElementById('progress-fill').style.width = (current / activeSet.length * 100) + '%';
+  document.getElementById('q-tag').textContent = 'Art. ' + item.art;
+  document.getElementById('q-text').textContent = item.q;
+
+  const optionsEl = document.getElementById('options');
+  optionsEl.innerHTML = '';
+  item.options.forEach(optText => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'option';
+    btn.textContent = optText;
+    btn.addEventListener('click', () => selectOption(btn, optText, item));
+    optionsEl.appendChild(btn);
+  });
+
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback';
+  fb.textContent = '';
+
+  const nextBtn = document.getElementById('next-btn');
+  nextBtn.disabled = true;
+  nextBtn.textContent = (current === activeSet.length - 1) ? 'Ver resultados' : 'Siguiente';
+}
+
+function selectOption(btn, optText, item){
+  if (answered) return;
+  answered = true;
+  item.userAnswer = optText;
+  const isCorrect = optText === item.correct;
+  if (isCorrect) score++;
+
+  document.querySelectorAll('.option').forEach(o => o.classList.add('locked'));
+  btn.classList.add('selected');
+
+  if (optInstant) {
+    document.querySelectorAll('.option').forEach(o => {
+      if (o.textContent === item.correct) o.classList.add('correct');
+      else if (o === btn && !isCorrect) o.classList.add('incorrect');
+    });
+    const fb = document.getElementById('feedback');
+    fb.classList.add('show', isCorrect ? 'ok' : 'no');
+    fb.textContent = isCorrect ? '¡Correcto!' : ('Incorrecto. La respuesta correcta era: ' + item.correct);
+  }
+
+  document.getElementById('score-text').textContent = 'Aciertos: ' + score;
+  document.getElementById('next-btn').disabled = false;
+}
+
+document.getElementById('next-btn').addEventListener('click', function(){
+  if (current < activeSet.length - 1) {
+    current++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+});
+
+function showResults(){
+  document.getElementById('quiz').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('final-score').textContent = score + ' / ' + activeSet.length;
+  const pct = Math.round((score / activeSet.length) * 100);
+  document.getElementById('final-pct').textContent = pct + '% de aciertos';
+
+  const review = document.getElementById('review');
+  review.innerHTML = '';
+  activeSet.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'review-item';
+    const isCorrect = item.userAnswer === item.correct;
+    div.innerHTML =
+      '<p class="rq">' + (i + 1) + '. ' + item.q + '</p>' +
+      (isCorrect
+        ? '<p class="ra right">Tu respuesta: ' + item.userAnswer + ' ✓</p>'
+        : '<p class="ra wrong">Tu respuesta: ' + (item.userAnswer || '(sin responder)') + ' ✗</p>' +
+          '<p class="ra right">Correcta: ' + item.correct + '</p>') +
+      '<p class="rart">Art. ' + item.art + '</p>';
+    review.appendChild(div);
+  });
+}
+
+document.getElementById('retry-same-btn').addEventListener('click', function(){
+  // Mismas preguntas (mismo orden en que quedaron), pero con las opciones vueltas a sortear.
+  activeSet = activeSet.map(item => {
+    const original = QUESTIONS.find(q => q.q === item.q);
+    return { art: original.art, q: original.q, correct: original.correct, options: buildOptions(original) };
+  });
+  startQuiz();
+});
+
+document.getElementById('retry-new-btn').addEventListener('click', function(){
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('setup').style.display = 'block';
+});
+</script>
+
+</body>
+</html>
