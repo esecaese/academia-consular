@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convención de Viena sobre Relaciones Consulares — Guía Para Dummies (Arts. 1 al 79) + Ley 4033</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:        #f6f3ec;
+    --paper:     #fffdf8;
+    --ink:       #22282e;
+    --ink-soft:  #414a52;
+    --ink-dim:   #6d757d;
+    --rule:      #e3ddcf;
+    --rule-soft: #eee9dd;
+    --accent:    #8a5a2b;
+    --accent-bg: #f4e6ce;
+    --blue:      #2f6180;
+    --blue-bg:   #eaf1f6;
+    --warn:      #a83e3e;
+    --warn-bg:   #f7e6e2;
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#15171a; --paper:#1c1f22; --ink:#e9e5dd; --ink-soft:#c6c2b9; --ink-dim:#8f8b83;
+      --rule:#34383c; --rule-soft:#26292c; --accent:#d9a566; --accent-bg:#2a2419;
+      --blue:#8ab6d0; --blue-bg:#1b2429; --warn:#e08585; --warn-bg:#2c1e1c;
+    }
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--serif); font-size:18px; line-height:1.78;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sans{ font-family:var(--sans); }
+
+  /* ---------- Barra de progreso ---------- */
+  #progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:var(--accent); z-index:60; transition:width .1s linear;
+  }
+
+  /* ---------- Cabecera ---------- */
+  header.masthead{
+    max-width:780px; margin:0 auto; padding:52px 22px 30px;
+  }
+  .eyebrow{
+    font-family:var(--sans); font-size:12px; font-weight:600;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 14px;
+  }
+  h1{
+    font-size:clamp(1.9rem, 1.4rem + 2.2vw, 2.9rem);
+    line-height:1.15; font-weight:700; letter-spacing:-.01em; margin:0 0 14px;
+  }
+  .subtitle{ font-size:1.1rem; color:var(--ink-soft); margin:0 0 22px; }
+  .meta{
+    font-family:var(--sans); font-size:.86rem; color:var(--ink-dim);
+    border-top:1px solid var(--rule); padding-top:16px;
+    display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
+  }
+  .meta .dot{ width:4px; height:4px; border-radius:50%; background:var(--ink-dim); display:inline-block; }
+
+  /* ---------- Índice ---------- */
+  nav.toc{
+    max-width:780px; margin:0 auto 10px; padding:0 22px;
+  }
+  nav.toc ol{
+    list-style:none; margin:0; padding:18px 20px;
+    background:var(--paper); border:1px solid var(--rule); border-radius:10px;
+    font-family:var(--sans); font-size:.9rem; columns:2; column-gap:26px;
+  }
+  nav.toc li{ margin:0 0 7px; break-inside:avoid; }
+  nav.toc a{ color:var(--ink-soft); text-decoration:none; }
+  nav.toc a:hover{ color:var(--accent); }
+  nav.toc .toc-title{
+    font-family:var(--sans); font-size:.72rem; font-weight:700; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--ink-dim); margin:0 0 10px;
+  }
+  nav.toc .toc-sub{
+    font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--accent); margin:14px 0 6px; break-inside:avoid;
+  }
+  @media (max-width:560px){ nav.toc ol{ columns:1; } }
+
+  /* ---------- Cuerpo ---------- */
+  main{ max-width:780px; margin:0 auto; padding:10px 22px 90px; }
+
+  section{ margin-top:52px; scroll-margin-top:20px; }
+  .kicker{
+    font-family:var(--sans); font-size:.72rem; font-weight:700; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--ink-dim); margin:0 0 6px;
+  }
+  h2{
+    font-size:clamp(1.4rem, 1.2rem + .8vw, 1.85rem); line-height:1.25;
+    font-weight:700; margin:0 0 10px; letter-spacing:-.005em;
+  }
+  h3{
+    font-size:1.18rem; font-weight:700; line-height:1.35;
+    margin:34px 0 8px; padding-top:2px;
+  }
+  h4{
+    font-family:var(--sans); font-size:.95rem; font-weight:700;
+    margin:22px 0 6px; color:var(--ink);
+  }
+  p{ margin:0 0 1.05em; }
+  .lead{ color:var(--ink-soft); font-size:1.04rem; }
+  strong{ font-weight:700; }
+  mark{
+    background:var(--accent-bg); color:inherit; padding:.05em .18em; border-radius:3px;
+    box-decoration-break:clone; -webkit-box-decoration-break:clone;
+  }
+  ul, ol{ margin:0 0 1.1em; padding-left:1.35em; }
+  li{ margin:0 0 .5em; }
+  .hr{ border:0; border-top:1px solid var(--rule); margin:48px 0 0; }
+
+  /* ---------- Tarjeta de artículo ---------- */
+  .art{
+    background:var(--paper); border:1px solid var(--rule);
+    border-left:3px solid var(--accent); border-radius:8px;
+    padding:16px 20px; margin:20px 0;
+  }
+  .art > :last-child{ margin-bottom:0; }
+  .art-num{
+    font-family:var(--sans); font-size:.72rem; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--accent); display:block; margin-bottom:6px;
+  }
+  .art-title{ font-weight:700; font-size:1.05rem; display:block; margin-bottom:6px; }
+
+  /* ---------- Cajas de apoyo ---------- */
+  .box{
+    background:var(--blue-bg); border:1px solid var(--rule);
+    border-left:3px solid var(--blue); border-radius:8px;
+    padding:14px 18px; margin:20px 0;
+    font-family:var(--sans); font-size:.94rem; line-height:1.65;
+  }
+  .box > :last-child{ margin-bottom:0; }
+  .box-label{
+    display:block; font-size:.7rem; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--blue); margin-bottom:5px;
+  }
+  .box.warn{ background:var(--warn-bg); border-left-color:var(--warn); }
+  .box.warn .box-label{ color:var(--warn); }
+
+  /* ---------- Lista de funciones ---------- */
+  .fx{ list-style:none; padding:0; margin:18px 0; }
+  .fx li{
+    display:flex; gap:12px; padding:11px 0; border-bottom:1px solid var(--rule-soft);
+    margin:0; break-inside:avoid;
+  }
+  .fx li:last-child{ border-bottom:none; }
+  .fx .tag{
+    flex:0 0 auto; font-family:var(--sans); font-size:.74rem; font-weight:700;
+    color:var(--accent); background:var(--accent-bg); border-radius:4px;
+    padding:2px 7px; height:fit-content; margin-top:4px; min-width:28px; text-align:center;
+  }
+  .fx .txt{ flex:1 1 auto; }
+  .fx .txt b{ display:block; font-size:1rem; }
+  .fx .txt span{ display:block; color:var(--ink-soft); font-size:.97rem; }
+
+  /* ---------- Tabla ---------- */
+  .table-wrap{ overflow-x:auto; margin:20px 0; }
+  table{
+    width:100%; border-collapse:collapse; font-family:var(--sans);
+    font-size:.9rem; background:var(--paper);
+  }
+  th, td{ border:1px solid var(--rule); padding:9px 12px; text-align:left; vertical-align:top; }
+  th{ background:var(--accent-bg); font-weight:700; color:var(--ink); }
+  td:first-child{ white-space:nowrap; font-weight:600; }
+
+  /* ---------- Preguntas ---------- */
+  .qa{ border-bottom:1px solid var(--rule); padding:14px 0; break-inside:avoid; }
+  .qa:last-child{ border-bottom:none; }
+  .qa .q{ font-weight:700; margin:0 0 6px; }
+  .qa .a{
+    font-family:var(--sans); font-size:.94rem; line-height:1.65;
+    color:var(--ink-soft); margin:0;
+  }
+  .qa .a b{
+    display:block; font-size:.68rem; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:3px;
+  }
+
+  /* ---------- Botón imprimir ---------- */
+  #print-btn{
+    position:fixed; right:18px; bottom:18px; z-index:55;
+    background:var(--paper); border:1px solid var(--rule); color:var(--ink-soft);
+    border-radius:999px; padding:11px 18px; cursor:pointer;
+    font-family:var(--sans); font-size:.85rem; font-weight:600;
+    box-shadow:0 4px 16px rgba(0,0,0,.12);
+  }
+  #print-btn:hover{ color:var(--accent); border-color:var(--accent); }
+
+  footer{
+    max-width:780px; margin:0 auto; padding:0 22px 40px;
+    font-family:var(--sans); font-size:.82rem; color:var(--ink-dim);
+  }
+
+  @media (max-width:640px){
+    body{ font-size:17px; }
+    header.masthead{ padding:34px 18px 24px; }
+    main{ padding:8px 18px 90px; }
+    nav.toc{ padding:0 18px; }
+    .art{ padding:14px 16px; }
+  }
+
+  /* ---------- Impresión A4 ---------- */
+  @page{ size:A4; margin:16mm 15mm; }
+  @media print{
+    :root{
+      --bg:#fff; --paper:#fff; --ink:#000; --ink-soft:#1f1f1f; --ink-dim:#444;
+      --rule:#bbb; --rule-soft:#ddd; --accent:#6b4318; --accent-bg:#f2ede5;
+      --blue:#2b5570; --blue-bg:#f2f5f8; --warn:#7a2b2b; --warn-bg:#f6ecea;
+    }
+    body{ background:#fff; font-size:10.5pt; line-height:1.5; }
+    #progress, #print-btn, .no-print{ display:none !important; }
+    header.masthead, nav.toc, main, footer{ max-width:100%; padding-left:0; padding-right:0; }
+    header.masthead{ padding-top:0; }
+    h1{ font-size:22pt; }
+    h2{ font-size:15pt; }
+    h3{ font-size:12pt; margin-top:16pt; }
+    section{ margin-top:20pt; }
+    h1, h2, h3, h4{ break-after:avoid; page-break-after:avoid; }
+    .art, .box, .qa, .fx li, tr{ break-inside:avoid; page-break-inside:avoid; }
+    .art, .box{ box-shadow:none; }
+    nav.toc ol{ border:1px solid #bbb; }
+    a{ color:inherit; text-decoration:none; }
+    .page-break{ break-before:page; page-break-before:always; }
+  }
+
+  /* ---------- Lector por bloques (texto a voz) ---------- */
+  #tts-toggle{
+    position:fixed; left:18px; bottom:18px; z-index:55;
+    background:var(--paper); border:1px solid var(--rule); color:var(--ink-soft);
+    border-radius:999px; padding:11px 18px; cursor:pointer;
+    font-family:var(--sans); font-size:.85rem; font-weight:600;
+    box-shadow:0 4px 16px rgba(0,0,0,.12); transition:bottom .2s ease;
+  }
+  #tts-toggle:hover{ color:var(--accent); border-color:var(--accent); }
+  body.tts-open #tts-toggle{ bottom:80px; }
+  body.tts-open #print-btn{ bottom:80px; }
+
+  #tts-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:70;
+    background:var(--paper); border-top:1px solid var(--rule);
+    box-shadow:0 -4px 20px rgba(0,0,0,.15);
+    padding:10px 14px; display:flex; align-items:center; gap:8px;
+    font-family:var(--sans);
+  }
+  #tts-bar[hidden]{ display:none; }
+  #tts-bar button{
+    border:1px solid var(--rule); background:var(--bg); color:var(--ink);
+    border-radius:8px; width:36px; height:36px; cursor:pointer; font-size:1rem;
+    display:flex; align-items:center; justify-content:center; flex:0 0 auto; padding:0;
+  }
+  #tts-bar button:hover{ border-color:var(--accent); color:var(--accent); }
+  #tts-play{ width:44px; height:44px; font-size:1.15rem; background:var(--accent-bg); border-color:var(--accent); color:var(--accent); }
+  #tts-info{ flex:1 1 auto; min-width:0; display:flex; flex-direction:column; gap:1px; }
+  #tts-label{ font-size:.85rem; font-weight:600; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  #tts-count{ font-size:.72rem; color:var(--ink-dim); }
+  #tts-rate{ width:auto; padding:0 10px; font-size:.78rem; font-weight:700; }
+
+  .tts-jump{
+    border:none !important; background:transparent !important; cursor:pointer; font-size:.8em;
+    width:auto !important; height:auto !important; margin-left:8px; opacity:.5; vertical-align:middle;
+  }
+  .tts-jump:hover{ opacity:1; }
+
+  .tts-current{
+    background:var(--accent-bg); box-shadow:-3px 0 0 0 var(--accent);
+    padding-left:8px; margin-left:-8px; border-radius:4px; transition:background .2s ease;
+  }
+
+  @media (max-width:480px){
+    #tts-bar{ gap:6px; padding:8px 10px; }
+    #tts-bar button{ width:32px; height:32px; }
+    #tts-play{ width:40px; height:40px; }
+  }
+
+  @media print{ #tts-bar, #tts-toggle, .tts-jump{ display:none !important; } }
+</style>
+</head>
+<body>
+
+<div id="progress" class="no-print"></div>
+
+<header class="masthead">
+  <p class="eyebrow">Academia Diplomática y Consular "Carlos Antonio López"</p>
+  <h1>Convención de Viena sobre<br>Relaciones Consulares</h1>
+  <p class="subtitle">Guía para dummies — toda la Convención (Arts. 1 al 79) explicada en criollo, más la tabla de
+  aranceles de la Ley 4033 para legalizar documentos.</p>
+  <div class="meta">
+    <span>Convención de 1963</span>
+    <span class="dot"></span>
+    <span>79 artículos completos</span>
+    <span class="dot"></span>
+    <span>+ Ley 4033/10 Paraguay</span>
+    <span class="dot no-print"></span>
+    <span id="reading-time" class="no-print">— min de lectura</span>
+  </div>
+</header>
+
+<nav class="toc no-print">
+  <p class="toc-title">Contenido</p>
+  <ol>
+    <li><a href="#panorama">Panorama general</a></li>
+    <li><a href="#art1">Art. 1 — El diccionario</a></li>
+    <p class="toc-sub">Cap. I — Relaciones consulares en general</p>
+    <li><a href="#sec1">Sec. I — Cómo nace y funciona un consulado (Arts. 2–24)</a></li>
+    <li><a href="#sec2">Sec. II — Cuándo termina el trabajo consular (Arts. 25–27)</a></li>
+    <p class="toc-sub">Cap. II — Privilegios e inmunidades</p>
+    <li><a href="#cap2sec1">Sec. I — Facilidades para la oficina (Arts. 28–39)</a></li>
+    <li><a href="#cap2sec2">Sec. II — Privilegios del cónsul de carrera (Arts. 40–57)</a></li>
+    <li><a href="#cap3">Cap. III — Cónsules honorarios (Arts. 58–68)</a></li>
+    <li><a href="#cap4">Cap. IV — Reglas generales y finales (Arts. 69–79)</a></li>
+    <li><a href="#resumen">Cuadro resumen (1 a 79)</a></li>
+    <li><a href="#claves">Puntos que más se preguntan</a></li>
+    <li><a href="#preguntas">Preguntas de repaso</a></li>
+    <p class="toc-sub">Bloque 2 — Paraguay</p>
+    <li><a href="#ley4033">Ley 4033 — Tabla para legalizar documentos</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ============ PANORAMA ============ -->
+<section id="panorama">
+  <p class="kicker">Para empezar, sin vueltas</p>
+  <h2>Panorama general</h2>
+  <p class="lead">Imaginate la Convención de Viena sobre Relaciones Consulares (CVRC, firmada en 1963) como el
+  <mark>manual de instrucciones único</mark> que usan todos los países del mundo para poner y hacer funcionar
+  consulados en otros países. Antes de este tratado cada quien se manejaba con costumbres sueltas; después de
+  1963, hay una sola guía compartida.</p>
+
+  <p>Una sola idea explica casi todo el tratado, así que memorizala primero: los privilegios que tiene un
+  consulado y su gente <mark>no son un regalo personal</mark>, son herramientas de trabajo. Se los da para que
+  puedan hacer bien su tarea —ayudar a los ciudadanos de su país—, no para que el cónsul viva mejor. A esto se le
+  dice <strong>"teoría de la necesidad funcional"</strong>: existe porque hace falta, no porque sí.</p>
+
+  <div class="box">
+    <span class="box-label">Dos palabras que vas a leer todo el tiempo</span>
+    <p><strong>Estado que envía:</strong> tu país, el que abre el consulado y manda a su gente.<br>
+    <strong>Estado receptor:</strong> el país anfitrión, donde ese consulado funciona.</p>
+  </div>
+
+  <p>La Convención tiene <strong>79 artículos</strong> repartidos en cuatro capítulos:</p>
+  <ul>
+    <li><strong>Capítulo I</strong> (Arts. 2 a 27): cómo se abre un consulado, qué hace, quién lo dirige y cuándo
+    se termina todo.</li>
+    <li><strong>Capítulo II</strong> (Arts. 28 a 57): los privilegios e inmunidades de la oficina y de los
+    cónsules "de carrera" (los profesionales, pagados por su Estado).</li>
+    <li><strong>Capítulo III</strong> (Arts. 58 a 68): la versión reducida de esos privilegios para los
+    <strong>cónsules honorarios</strong> (gente que hace ese trabajo sin ser diplomático de profesión, muchas
+    veces del propio país receptor).</li>
+    <li><strong>Capítulo IV</strong> (Arts. 69 a 79): reglas generales y trámites finales del tratado.</li>
+  </ul>
+
+  <div class="box">
+    <span class="box-label">Cómo leer esta guía</span>
+    <p>Cada artículo está resumido en criollo, con lo esencial y nada más. Si querés citar el texto exacto en un
+    examen escrito, siempre conviene chequear el texto oficial de la Convención; acá el objetivo es que
+    <strong>entiendas la idea</strong> rápido y la recuerdes.</p>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ============ ART 1 ============ -->
+<section id="art1">
+  <p class="kicker">Artículo 1</p>
+  <h2>El diccionario del tratado</h2>
+  <p class="lead">Antes de meterse en reglas, la Convención define las palabras que va a usar todo el tiempo. Es
+  puro vocabulario, pero se pregunta seguido porque después todo se apoya en estas definiciones.</p>
+
+  <h3>Las oficinas y el territorio</h3>
+  <ul class="fx">
+    <li><span class="tag">a</span><span class="txt"><b>Oficina consular</b><span>Cualquiera de estas cuatro: consulado general, consulado, viceconsulado o agencia consular.</span></span></li>
+    <li><span class="tag">b</span><span class="txt"><b>Circunscripción consular</b><span>El pedazo de territorio que le toca atender a esa oficina.</span></span></li>
+    <li><span class="tag">j</span><span class="txt"><b>Locales consulares</b><span>Los edificios (o partes de ellos) y el terreno de al lado que se usan <mark>solo</mark> para el consulado. No importa de quién sean: importa que se usen exclusivamente para eso.</span></span></li>
+    <li><span class="tag">k</span><span class="txt"><b>Archivos consulares</b><span>Todos los papeles, correspondencia, libros, películas, grabaciones, cifras y claves, ficheros y hasta los muebles pensados para guardarlos.</span></span></li>
+  </ul>
+
+  <h3>Las personas</h3>
+  <ul class="fx">
+    <li><span class="tag">c</span><span class="txt"><b>Jefe de oficina consular</b><span>Quien dirige la oficina.</span></span></li>
+    <li><span class="tag">d</span><span class="txt"><b>Funcionario consular</b><span>Quien hace trabajo consular de verdad, <mark>incluido el jefe</mark>.</span></span></li>
+    <li><span class="tag">e</span><span class="txt"><b>Empleado consular</b><span>Trabaja en lo administrativo o técnico: secretaría, contabilidad, sistemas.</span></span></li>
+    <li><span class="tag">f</span><span class="txt"><b>Personal de servicio</b><span>Tareas domésticas: limpieza, chofer, portería.</span></span></li>
+    <li><span class="tag">i</span><span class="txt"><b>Personal privado</b><span>Empleado <mark>de una persona</mark> del consulado (por ejemplo, su niñera), no del consulado en sí.</span></span></li>
+  </ul>
+
+  <div class="art">
+    <span class="art-num">Truco para no confundirse</span>
+    <p><strong>Miembros de la oficina consular</strong> = todos, <mark>incluido el jefe</mark>.<br>
+    <strong>Miembros del personal consular</strong> = todos, pero <mark>sin el jefe</mark>.<br>
+    Regla mnemotécnica: "de la oficina" suma al jefe; "del personal" lo saca.</p>
+  </div>
+
+  <p>Además hay dos tipos de funcionarios consulares: los <strong>de carrera</strong> (diplomáticos de profesión,
+  el Capítulo II es para ellos) y los <strong>honorarios</strong> (gente designada para el cargo, muchas veces
+  vecinos del propio país receptor, el Capítulo III es para ellos). Y si un miembro de la oficina es nacional o
+  vive permanentemente en el país receptor, tiene un régimen más chico de privilegios (lo ve el Art. 71).</p>
+</section>
+
+<hr class="hr">
+
+<!-- ============ SECCIÓN I (2-24) ============ -->
+<section id="sec1">
+  <p class="kicker">Capítulo I — Sección I</p>
+  <h2>Cómo nace y funciona un consulado (Arts. 2 a 24)</h2>
+  <p class="lead">Acá está casi todo lo que ya conocías: cómo se abren relaciones consulares, qué hace un
+  cónsul, quién lo dirige y cómo se ordena el protocolo.</p>
+
+  <div class="art">
+    <span class="art-num">Art. 2 — Cómo nacen las relaciones consulares</span>
+    <p>Se necesita el <mark>acuerdo de los dos países</mark>. Si dos países ya se pusieron de acuerdo en tener
+    relaciones diplomáticas (embajadas), se entiende que también aceptaron tener relaciones consulares, salvo que
+    digan lo contrario. Y ojo: si rompen relaciones diplomáticas (pelea entre gobiernos), <mark>eso no rompe
+    automáticamente</mark> las consulares. El consulado puede seguir ayudando a la gente igual.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 3 — Quién puede hacer trabajo consular</span>
+    <p>Las oficinas consulares, obvio. Pero también las <strong>embajadas</strong> pueden hacerlo (por eso muchas
+    embajadas tienen adentro una "sección consular").</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 4 — Abrir una oficina consular</span>
+    <p>No se abre nada sin el <mark>permiso del país anfitrión</mark>. Tu país elige la ciudad, el tipo de
+    oficina y la zona que va a atender, pero el anfitrión tiene que aprobarlo. Y si después querés cambiar
+    cualquiera de esas tres cosas —ciudad, tipo o zona—, tenés que volver a pedir permiso.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 5 — Qué hace un cónsul (las 13 tareas)</span>
+    <p>Es el artículo más largo. Pensalo en cinco paquetes, más una puerta abierta al final:</p>
+    <ul>
+      <li><strong>Cuidar y acercar</strong> (a, b, c): proteger a su gente y sus empresas, fomentar el comercio y
+      la cultura entre los dos países, e informarse <mark>por medios lícitos</mark> (nada de espionaje) de cómo
+      va la economía local.</li>
+      <li><strong>Papeles y auxilio</strong> (d, e): dar pasaportes y visas, y ayudar a sus connacionales.</li>
+      <li><strong>Trámites de la vida diaria</strong> (f, g, h): hacer de notario o registro civil, cuidar
+      herencias y ocuparse de menores o personas sin capacidad plena — siempre dentro de la ley local.</li>
+      <li><strong>Temas judiciales</strong> (i, j): representar a un connacional que no puede defenderse a
+      tiempo, y llevar notificaciones o pedidos entre jueces de los dos países.</li>
+      <li><strong>Buques y aviones</strong> (k, l): controlar los de su bandera y ayudarlos cuando lo necesiten.</li>
+      <li><strong>La puerta abierta</strong> (m): cualquier otra tarea que le encargue su país, mientras no la
+      prohíba la ley local.</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <span class="box-label">Frase que se repite en casi todas las letras</span>
+    <p>"Conforme a las leyes del Estado receptor". El cónsul trabaja <mark>dentro</mark> de la ley del país
+    anfitrión, nunca por encima de ella.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 6 — Trabajar fuera de su zona</span>
+    <p>Solo en casos especiales (un accidente, una catástrofe) y con permiso del país anfitrión.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 7 — Atender a otro país desde el mismo consulado</span>
+    <p>Un consulado que ya está instalado puede además atender los asuntos consulares de <strong>otro
+    país</strong>, avisando a todos los interesados y sin que nadie se oponga.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 8 — Trabajar por cuenta de un tercer país</span>
+    <p>El consulado se queda donde está, pero hace trámites <strong>en nombre de otro Estado</strong>, avisando
+    al país anfitrión y sin que este se oponga.</p>
+  </div>
+
+  <div class="box">
+    <span class="box-label">Art. 7 vs. Art. 8, para no confundirlos</span>
+    <p><strong>Art. 7:</strong> el consulado estira su trabajo <em>hacia otro país</em>, siempre para el suyo
+    propio.<br><strong>Art. 8:</strong> el consulado se queda quieto, pero labura <em>para otro país</em>.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 9 — Las cuatro clases de jefe</span>
+    <p>En orden: <strong>cónsul general</strong>, <strong>cónsul</strong>, <strong>vicecónsul</strong> y
+    <strong>agente consular</strong>. Cada clase corresponde a un tipo de oficina del Art. 1. Para el resto del
+    personal (que no sea jefe), cada país le pone el nombre que quiera.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 10 — Nombramiento y admisión</span>
+    <p>Dos pasos, uno por país: tu país <strong>nombra</strong> al jefe; el país anfitrión lo <strong>admite</strong>.
+    Cada uno sigue sus propias reglas para hacerlo.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 11 — La carta patente</span>
+    <p>El papel que acredita al jefe. Lleva cuatro datos: <strong>nombre</strong>, <strong>clase y
+    categoría</strong>, <strong>circunscripción</strong> y <strong>sede</strong>. Si el anfitrión lo acepta, puede
+    cambiarse por una simple notificación con los mismos datos.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 12 — El exequátur</span>
+    <p>Es el "OK, podés empezar" del país anfitrión. <mark>Puede negarse sin explicar por qué.</mark> Sin
+    exequátur el jefe no arranca a trabajar, salvo las excepciones de los arts. 13 y 15.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 13 — Mientras se tramita el exequátur</span>
+    <p>El país anfitrión puede dejarlo trabajar <mark>provisionalmente</mark>, con todas las reglas de la
+    Convención aplicándose igual.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 14 — Avisar a las autoridades locales</span>
+    <p>Apenas admiten al jefe (aunque sea provisional), el anfitrión tiene que avisarle a la policía, aduana,
+    tribunales, etc. de su zona, y ayudarlo a trabajar bien.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 15 — El jefe interino</span>
+    <p>Si el jefe titular no puede trabajar o el puesto queda vacío, puede haber un reemplazante temporal. Se
+    avisa su nombre a la Cancillería del anfitrión, y mientras dura el interinato tiene casi el mismo trato que un
+    titular (con algunos límites).</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 16 — Precedencia entre jefes de distintas oficinas</span>
+    <p>Orden de "quién va primero" en actos protocolares: primero manda la <mark>fecha del exequátur</mark>
+    (o de la admisión provisional si la hubo); en empate, la fecha de la carta patente. Los interinos van después
+    de los titulares, y los honorarios después de los de carrera.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 17 — Cuando un cónsul hace de embajador</span>
+    <p>Si tu país no tiene embajada ahí, un cónsul puede hacer actos diplomáticos con permiso del anfitrión, pero
+    eso <mark>no le da inmunidades diplomáticas</mark>: sigue siendo cónsul. También puede representar a su país
+    ante organismos internacionales, avisando antes.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 18 — Un mismo cónsul para varios países</span>
+    <p>Dos o más países pueden nombrar a la misma persona como su cónsul, si el anfitrión lo permite. Muy común
+    con cónsules honorarios de países chicos.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 19 — Nombrar al resto del personal</span>
+    <p>Regla: libertad total. Límites: los arts. 20 (cantidad razonable), 22 (nacionalidad) y 23 (persona no
+    aceptable). Hay que avisar nombre, clase y categoría de cada uno con tiempo.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 20 — Cuántas personas puede tener la oficina</span>
+    <p>Si no hay acuerdo expreso, el anfitrión puede pedir que el número sea "razonable y normal" según las
+    necesidades reales de esa oficina.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 21 — Precedencia adentro de la misma oficina</span>
+    <p>Ese orden interno lo decide tu país, y solo se <strong>comunica</strong> a la Cancillería anfitriona (no
+    hace falta su aprobación).</p>
+  </div>
+
+  <div class="box">
+    <span class="box-label">Art. 16 vs. Art. 21</span>
+    <p><strong>Art. 16:</strong> ordena a jefes de <em>distintos</em> consulados, con reglas fijas de la
+    Convención.<br><strong>Art. 21:</strong> ordena a la gente <em>dentro de un mismo</em> consulado; lo decide tu
+    país y solo se avisa.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 22 — De qué nacionalidad tienen que ser los cónsules</span>
+    <p>En principio, nacionales de tu propio país. Para nombrar a alguien del país anfitrión hace falta su
+    <mark>consentimiento expreso</mark>, que además puede retirar cuando quiera.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 23 — "Persona non grata"</span>
+    <p>El anfitrión puede avisar en cualquier momento que ya no quiere a un funcionario consular ahí,
+    <mark>sin explicar por qué</mark>. Tu país entonces tiene que retirarlo o terminar su función. Si no lo hace a
+    tiempo, el anfitrión puede sacarle el exequátur o dejar de reconocerlo como parte del personal. También
+    puede rechazarlo antes de que llegue.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 24 — Avisar movimientos de personal</span>
+    <p>Tu país (o el consulado) tiene que avisar al anfitrión cuándo llega y se va cada miembro de la oficina y su
+    familia, quién nace o muere, y quién empieza o deja de trabajar como personal privado.</p>
+  </div>
+</section>
+
+<!-- ============ SECCIÓN II (25-27) ============ -->
+<section id="sec2">
+  <p class="kicker">Capítulo I — Sección II</p>
+  <h2>Cuándo termina el trabajo consular (Arts. 25 a 27)</h2>
+
+  <div class="art">
+    <span class="art-num">Art. 25 — Fin de las funciones de una persona</span>
+    <p>Se termina cuando tu país avisa que esa persona ya no trabaja ahí, cuando el anfitrión le retira el
+    exequátur, o cuando el anfitrión avisa que ya no la considera parte del personal.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 26 — Salir del país</span>
+    <p>Incluso en guerra, el anfitrión tiene que dar tiempo y facilidades para que el personal consular, su
+    familia y hasta el personal privado (no nacional del anfitrión) puedan armar valijas y salir tranquilos una
+    vez que terminó su trabajo.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 27 — Cuidar el local y los archivos en situaciones extremas</span>
+    <p>Si se cortan relaciones, o se cierra un consulado (para siempre o por un tiempo), el anfitrión igual tiene
+    que <mark>respetar y proteger</mark> el local, los bienes y los archivos, aunque no quede nadie trabajando
+    adentro. Los intereses de tu país pueden confiarse a un tercer país aceptable para ambos.</p>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ============ CAP II SECCIÓN I (28-39) ============ -->
+<section id="cap2sec1" class="page-break">
+  <p class="kicker">Capítulo II — Sección I</p>
+  <h2>Facilidades para la oficina consular (Arts. 28 a 39)</h2>
+  <p class="lead">A partir de acá, la Convención deja de hablar de trámites y empieza a hablar de
+  <strong>privilegios e inmunidades</strong>: lo que el país anfitrión tiene que darle al consulado para que
+  funcione sin que nadie lo moleste.</p>
+
+  <div class="art">
+    <span class="art-num">Art. 28 — Facilidades generales</span>
+    <p>El anfitrión tiene que dar todas las facilidades posibles para que la oficina trabaje bien.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 29 — Bandera y escudo</span>
+    <p>Se pueden poner en el local, en la casa del jefe y en sus autos.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 30 — Conseguir dónde instalarse</span>
+    <p>El anfitrión debe ayudar a conseguir local para la oficina y vivienda digna para el personal.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 31 — El local es intocable</span>
+    <p>Las autoridades del anfitrión <mark>no pueden entrar sin permiso</mark> del jefe de oficina (salvo un
+    incendio u otro desastre urgente). Además, el anfitrión debe protegerlo de intrusos, daños o ruidos molestos,
+    y no puede expropiarlo salvo que indemnice y evite trabar el trabajo consular.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 32 — Sin impuestos sobre el local</span>
+    <p>El local consular y la casa del jefe de carrera no pagan impuestos del anfitrión, salvo los que sean pago
+    por un servicio concreto (agua, luz, etc.).</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 33 — Los archivos son intocables siempre</span>
+    <p>En cualquier momento y en cualquier lugar donde estén.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 34 — Libertad para moverse</span>
+    <p>El personal puede circular por el país, salvo zonas prohibidas por seguridad nacional.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 35 — Libertad para comunicarse</span>
+    <p>La oficina puede hablar con su gobierno, sus embajadas y otros consulados propios por cualquier medio,
+    incluso en clave y con valija diplomática. La <mark>valija no se abre ni se retiene</mark> (aunque el
+    anfitrión puede pedir que la abran si sospecha algo raro; si se niegan, se la devuelven al remitente).</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 36 — El más importante: hablar con sus ciudadanos</span>
+    <p>Cualquier connacional tiene derecho a comunicarse con su cónsul, y el cónsul con él. Si detienen o meten
+    preso a un extranjero, <mark>las autoridades locales deben avisarle que puede pedir que informen a su
+    consulado</mark>, y avisar al consulado si el detenido lo pide. El cónsul puede visitarlo, hablarle y
+    ayudarlo a conseguir defensa legal.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 37 — Avisar en casos especiales</span>
+    <p>El anfitrión debe avisar al consulado si muere un connacional, si hace falta un tutor para un menor
+    connacional, o si hay un naufragio o accidente aéreo de una nave o avión de ese país.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 38 — Hablar con las autoridades locales</span>
+    <p>El cónsul puede dirigirse a las autoridades de su zona y, según la costumbre local, también a las
+    autoridades centrales.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 39 — Cobrar por sus trámites</span>
+    <p>El consulado puede cobrar aranceles por lo que hace, y esa plata está libre de impuestos del anfitrión.</p>
+  </div>
+</section>
+
+<!-- ============ CAP II SECCIÓN II (40-57) ============ -->
+<section id="cap2sec2" class="page-break">
+  <p class="kicker">Capítulo II — Sección II</p>
+  <h2>Privilegios del cónsul de carrera (Arts. 40 a 57)</h2>
+  <p class="lead">Ahora la protección es para las <strong>personas</strong>: el jefe, los funcionarios, los
+  empleados y sus familias, si son de carrera (profesionales pagados por su Estado).</p>
+
+  <div class="art">
+    <span class="art-num">Art. 40 — Protección personal</span>
+    <p>El anfitrión debe tratarlo con respeto y protegerlo de cualquier ataque a su persona, libertad o dignidad.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 41 — No se lo puede meter preso así nomás</span>
+    <p>Solo por un delito grave y con orden judicial. Fuera de eso, no se le puede restringir la libertad
+    mientras espera juicio, salvo sentencia firme.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 42 — Avisar si lo detienen</span>
+    <p>Si lo arrestan o le abren una causa penal, el anfitrión debe avisar rápido al jefe de la oficina (o, si es
+    el jefe, a su país por vía diplomática).</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 43 — Inmunidad de jurisdicción</span>
+    <p>No responde ante tribunales del anfitrión por lo que hace <mark>en su función</mark> consular. Excepciones:
+    juicios civiles por contratos que firmó a título personal, o por daños de un accidente de tránsito.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 44 — Puede negarse a declarar sobre su trabajo</span>
+    <p>Puede ser citado a declarar, pero no tiene que hablar de asuntos de su función ni mostrar documentos
+    oficiales, ni opinar como experto sobre la ley de su propio país.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 45 — Renunciar a los privilegios</span>
+    <p>Solo el <strong>Estado que envía</strong> puede renunciar a estos privilegios, y siempre por escrito.
+    Renunciar a la inmunidad en un juicio no incluye renunciar a que se ejecute la sentencia: para eso hace falta
+    otra renuncia aparte.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 46 — Sin registro de extranjeros</span>
+    <p>El cónsul y su familia no tienen que anotarse como extranjeros ni sacar permiso de residencia (no aplica
+    si trabajan de forma privada con fines de lucro).</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 47 — Sin permiso de trabajo</span>
+    <p>Para las tareas que hacen al servicio de su Estado.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 48 — Sin seguridad social local</span>
+    <p>Salvo que trabajen en algo privado con fines de lucro.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 49 — Sin impuestos personales</span>
+    <p>No pagan impuestos del anfitrión sobre su sueldo. Sí pagan los impuestos "escondidos" en el precio de las
+    cosas, los de propiedades privadas que tengan ahí, o los que salgan de negocios privados propios.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 50 — Sin aduana</span>
+    <p>Sus cosas personales y las de la oficina entran libres de aduana. El equipaje personal no se revisa, salvo
+    fuerte sospecha, y en ese caso se abre con él presente.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 51 — Si fallece</span>
+    <p>El anfitrión respeta su herencia y no cobra impuestos sobre los bienes muebles que tenía ahí solo por su
+    cargo.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 52 — Sin cargas obligatorias</span>
+    <p>No tiene que hacer trabajos forzosos (como ser jurado) ni cargas militares (alojar tropas, requisas).</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 53 — Cuándo empiezan y terminan sus privilegios</span>
+    <p>Empiezan al entrar al país para asumir (o al asumir si ya estaba ahí). Terminan al irse del país, o pasado
+    un tiempo razonable después de dejar el cargo (lo hecho mientras trabajaba sigue protegido igual).</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 54 — Un tercer país también tiene que colaborar</span>
+    <p>Si el cónsul está de paso por un tercer país yendo a su puesto o volviendo a casa, ese tercer país le da
+    las mismas facilidades (y a su correspondencia oficial en tránsito).</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 55 — Respetar la ley local</span>
+    <p>El cónsul y su gente tienen que cumplir las leyes del anfitrión y no meterse en su política interna. El
+    local no se usa para nada que no sea trabajo consular.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 56 — Seguro obligatorio</span>
+    <p>Por los daños que puedan causar con autos, barcos o aviones.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 57 — No puede tener negocios privados</span>
+    <p>Un cónsul de carrera no puede hacer actividades profesionales o comerciales privadas para ganar plata
+    extra. Si lo hace, pierde los privilegios de esta sección.</p>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ============ CAP III (58-68) ============ -->
+<section id="cap3" class="page-break">
+  <p class="kicker">Capítulo III</p>
+  <h2>Cónsules honorarios (Arts. 58 a 68)</h2>
+  <p class="lead">Los cónsules honorarios hacen el mismo trabajo pero no viven de eso, y muchas veces son
+  vecinos del propio país anfitrión. Por eso reciben una <mark>versión más chica</mark> de los privilegios del
+  Capítulo II.</p>
+
+  <div class="art">
+    <span class="art-num">Art. 58 — Qué reglas se les aplican igual</span>
+    <p>Entre otras: facilidades para trabajar, uso de bandera y escudo, comunicación (con matices), avisos por
+    fallecimiento o naufragio, comunicación con connacionales y cobro de aranceles. El resto es más limitado.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 59 — Protección del local</span>
+    <p>El anfitrión debe protegerlo de intrusos, daños o ruidos molestos.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 60 — Sin impuestos sobre el local, con una condición</span>
+    <p>Solo si el local es propiedad de su Estado (o de alguien que actúa por él). Si es propiedad del propio
+    cónsul honorario o de un tercero que se lo alquila, no aplica.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 61 — Archivos intocables, si están separados</span>
+    <p>Solo si los archivos consulares están guardados aparte de los papeles privados del cónsul honorario.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 62 — Sin aduana, solo para lo oficial</span>
+    <p>Banderas, sellos, libros, muebles y útiles de oficina con el escudo del Estado que envía. Nada personal.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 63 — Si tiene un proceso penal</span>
+    <p>Tiene que presentarse, pero se lo trata con el respeto debido a su cargo y molestando lo menos posible su
+    trabajo. Si lo detienen, el proceso va lo más rápido posible.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 64 — Protección personal</span>
+    <p>El anfitrión le da la protección que corresponde por su carácter oficial.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 65 — Sin registro de extranjeros</span>
+    <p>Salvo que haga actividades privadas con fines de lucro en el país anfitrión.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 66 — Sin impuestos, solo sobre lo consular</span>
+    <p>No paga impuestos sobre lo que cobra por su trabajo consular. Por todo lo demás (sus otros ingresos), paga
+    impuestos como cualquier residente.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 67 — Sin cargas obligatorias ni militares</span>
+    <p>Igual que los de carrera en este punto.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 68 — Es opcional</span>
+    <p>Cada país decide libremente si nombra o acepta cónsules honorarios. Nadie está obligado a tenerlos.</p>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ============ CAP IV (69-79) ============ -->
+<section id="cap4" class="page-break">
+  <p class="kicker">Capítulo IV</p>
+  <h2>Reglas generales y finales (Arts. 69 a 79)</h2>
+
+  <div class="art">
+    <span class="art-num">Art. 69 — Agencias sin jefe de oficina formal</span>
+    <p>Un país puede tener agencias dirigidas por alguien que no tiene el rango completo de jefe de oficina. Se
+    arregla de común acuerdo con el país anfitrión.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 70 — Cuando una embajada hace trabajo consular</span>
+    <p>Puede hacerlo, avisando al anfitrión los nombres del personal que atienda esa "sección consular" o que
+    haga tareas consulares dentro de la misión. Ojo con este detalle, porque se presta a confusión: ese personal
+    <mark>sigue con su régimen diplomático</mark> (el más protector) para todo, aunque las tareas que haga sean
+    consulares. La Convención no le aplica el régimen del Capítulo II aunque esté "en la sección consular" de la
+    embajada.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 71 — Si el cónsul es del propio país anfitrión</span>
+    <p>Si es nacional o vive permanentemente ahí, solo tiene inmunidad por sus actos oficiales y no puede ser
+    detenido salvo delito grave. Los demás miembros de la oficina que estén en esa situación tienen privilegios
+    solo si el anfitrión se los concede.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 72 — No discriminar</span>
+    <p>El anfitrión no puede tratar peor a un país que a otro al aplicar la Convención. Aplicar lo mismo de
+    restrictivo que el otro país aplica (reciprocidad) no cuenta como discriminación.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Art. 73 — Relación con otros tratados</span>
+    <p>Esta Convención no pisa otros acuerdos internacionales ya vigentes entre los países. Y se pueden firmar
+    nuevos acuerdos que la confirmen, completen o amplíen.</p>
+  </div>
+
+  <div class="art">
+    <span class="art-num">Arts. 74 a 79 — El trámite final del tratado</span>
+    <p>Son las cláusulas de "cómo se firma este tratado", raramente entran en examen, pero conviene saber que
+    existen:</p>
+    <ul>
+      <li><strong>Art. 74 — Firma:</strong> quiénes pudieron firmar la Convención y hasta cuándo.</li>
+      <li><strong>Art. 75 — Ratificación:</strong> cómo un país confirma que se obliga por el tratado.</li>
+      <li><strong>Art. 76 — Adhesión:</strong> cómo se suma un país que no llegó a firmarlo a tiempo.</li>
+      <li><strong>Art. 77 — Entrada en vigor:</strong> desde cuándo empieza a regir.</li>
+      <li><strong>Art. 78 — Notificaciones:</strong> el Secretario General de la ONU avisa a todos los países
+      sobre firmas, ratificaciones y adhesiones.</li>
+      <li><strong>Art. 79 — Textos auténticos:</strong> el tratado vale igual en chino, español, francés, inglés
+      y ruso; todos son igual de oficiales.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ============ RESUMEN ============ -->
+<section id="resumen" class="page-break">
+  <p class="kicker">Repaso rápido</p>
+  <h2>Cuadro resumen de los artículos 1 al 79</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Art.</th><th>Tema</th><th>Idea para recordar</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Definiciones</td><td>El diccionario del tratado.</td></tr>
+        <tr><td>2</td><td>Nacimiento de relaciones</td><td>Consentimiento mutuo; lo diplomático arrastra lo consular; romper lo diplomático no rompe lo consular.</td></tr>
+        <tr><td>3</td><td>Quién ejerce</td><td>Las oficinas consulares y también las embajadas.</td></tr>
+        <tr><td>4</td><td>Apertura de oficina</td><td>Sede, clase y circunscripción, aprobadas por el anfitrión.</td></tr>
+        <tr><td>5</td><td>Funciones consulares</td><td>Trece tareas, de la a a la m; la m deja la lista abierta.</td></tr>
+        <tr><td>6</td><td>Fuera de la circunscripción</td><td>Solo en casos especiales y con permiso.</td></tr>
+        <tr><td>7</td><td>En un tercer Estado</td><td>Atender otro país, avisando y sin oposición.</td></tr>
+        <tr><td>8</td><td>Por cuenta de otro Estado</td><td>Trabajar para un tercer país, con aviso y sin oposición.</td></tr>
+        <tr><td>9</td><td>Clases de jefes</td><td>Cónsul general, cónsul, vicecónsul, agente consular.</td></tr>
+        <tr><td>10</td><td>Nombramiento y admisión</td><td>Uno nombra, el otro admite.</td></tr>
+        <tr><td>11</td><td>Carta patente</td><td>Nombre, clase, circunscripción y sede.</td></tr>
+        <tr><td>12</td><td>Exequátur</td><td>Permiso para empezar; puede negarse sin explicar.</td></tr>
+        <tr><td>13</td><td>Admisión provisional</td><td>Puede trabajar antes del exequátur.</td></tr>
+        <tr><td>14</td><td>Aviso a la circunscripción</td><td>Se avisa a las autoridades locales.</td></tr>
+        <tr><td>15</td><td>Jefe interino</td><td>Reemplazo temporal; se notifica; trato casi igual al titular.</td></tr>
+        <tr><td>16</td><td>Precedencia entre oficinas</td><td>Manda la fecha del exequátur.</td></tr>
+        <tr><td>17</td><td>Actos diplomáticos</td><td>Puede hacerlos, sin ganar inmunidad diplomática.</td></tr>
+        <tr><td>18</td><td>Cónsul de varios Estados</td><td>Misma persona, varios países, con permiso del anfitrión.</td></tr>
+        <tr><td>19</td><td>Nombramiento del personal</td><td>Libertad, con límites de los arts. 20, 22 y 23.</td></tr>
+        <tr><td>20</td><td>Número de miembros</td><td>Razonable y normal, si no hay acuerdo.</td></tr>
+        <tr><td>21</td><td>Precedencia interna</td><td>La fija tu país y se comunica.</td></tr>
+        <tr><td>22</td><td>Nacionalidad</td><td>En principio, del Estado que envía.</td></tr>
+        <tr><td>23</td><td>Persona non grata</td><td>El anfitrión puede rechazarla sin dar motivos.</td></tr>
+        <tr><td>24</td><td>Notificar movimientos</td><td>Llegadas, salidas, nacimientos y muertes se avisan.</td></tr>
+        <tr><td>25</td><td>Fin de funciones</td><td>Por aviso, retiro de exequátur o desconocimiento.</td></tr>
+        <tr><td>26</td><td>Salida del territorio</td><td>Tiempo y facilidades para irse, incluso en guerra.</td></tr>
+        <tr><td>27</td><td>Protección en casos extremos</td><td>Local y archivos protegidos aunque el consulado cierre.</td></tr>
+        <tr><td>28</td><td>Facilidades generales</td><td>El anfitrión ayuda a que la oficina trabaje.</td></tr>
+        <tr><td>29</td><td>Bandera y escudo</td><td>En el local, la residencia del jefe y sus autos.</td></tr>
+        <tr><td>30</td><td>Alojamiento</td><td>Ayuda para conseguir local y vivienda.</td></tr>
+        <tr><td>31</td><td>Inviolabilidad del local</td><td>No se entra sin permiso del jefe.</td></tr>
+        <tr><td>32</td><td>Exención de impuestos del local</td><td>Salvo pagos por servicios concretos.</td></tr>
+        <tr><td>33</td><td>Inviolabilidad de archivos</td><td>Siempre, en cualquier lugar.</td></tr>
+        <tr><td>34</td><td>Libertad de circulación</td><td>Salvo zonas prohibidas por seguridad.</td></tr>
+        <tr><td>35</td><td>Libertad de comunicación</td><td>Valija consular inviolable.</td></tr>
+        <tr><td>36</td><td>Comunicación con connacionales</td><td>Derecho a avisar al consulado si lo detienen.</td></tr>
+        <tr><td>37</td><td>Avisos especiales</td><td>Muertes, tutelas, naufragios, accidentes aéreos.</td></tr>
+        <tr><td>38</td><td>Comunicación con autoridades locales</td><td>De su zona, y a veces las centrales.</td></tr>
+        <tr><td>39</td><td>Aranceles consulares</td><td>Puede cobrar, sin impuestos del anfitrión.</td></tr>
+        <tr><td>40</td><td>Protección personal</td><td>Respeto y protección para el cónsul.</td></tr>
+        <tr><td>41</td><td>Inviolabilidad personal</td><td>No detención salvo delito grave con orden judicial.</td></tr>
+        <tr><td>42</td><td>Aviso de detención</td><td>Se avisa rápido a la oficina o al país.</td></tr>
+        <tr><td>43</td><td>Inmunidad de jurisdicción</td><td>Por actos oficiales; con dos excepciones civiles.</td></tr>
+        <tr><td>44</td><td>Obligación de testificar</td><td>Puede negarse a hablar de su función.</td></tr>
+        <tr><td>45</td><td>Renuncia a privilegios</td><td>Solo el Estado que envía, por escrito.</td></tr>
+        <tr><td>46</td><td>Sin registro de extranjeros</td><td>Salvo actividad privada con fines de lucro.</td></tr>
+        <tr><td>47</td><td>Sin permiso de trabajo</td><td>Para tareas oficiales.</td></tr>
+        <tr><td>48</td><td>Sin seguridad social</td><td>Salvo actividad privada con fines de lucro.</td></tr>
+        <tr><td>49</td><td>Sin impuestos personales</td><td>Con excepciones puntuales.</td></tr>
+        <tr><td>50</td><td>Sin aduana</td><td>Equipaje libre, salvo fuerte sospecha.</td></tr>
+        <tr><td>51</td><td>Sucesión (herencia)</td><td>Se respeta, sin impuestos sobre bienes por la función.</td></tr>
+        <tr><td>52</td><td>Sin cargas obligatorias</td><td>Ni civiles ni militares.</td></tr>
+        <tr><td>53</td><td>Inicio y fin de privilegios</td><td>Desde que entra hasta un tiempo razonable después.</td></tr>
+        <tr><td>54</td><td>Obligaciones de terceros Estados</td><td>Facilidades en tránsito.</td></tr>
+        <tr><td>55</td><td>Respetar la ley local</td><td>Sin meterse en política interna.</td></tr>
+        <tr><td>56</td><td>Seguro obligatorio</td><td>Por daños a terceros con vehículos.</td></tr>
+        <tr><td>57</td><td>Sin negocios privados</td><td>Para los de carrera; si lo hace, pierde privilegios.</td></tr>
+        <tr><td>58</td><td>Reglas para honorarios</td><td>Se les aplica una parte del Capítulo II.</td></tr>
+        <tr><td>59</td><td>Protección del local (honorario)</td><td>Contra intrusión y daños.</td></tr>
+        <tr><td>60</td><td>Impuestos del local (honorario)</td><td>Exento solo si es propiedad del Estado que envía.</td></tr>
+        <tr><td>61</td><td>Archivos (honorario)</td><td>Intocables solo si están separados de lo privado.</td></tr>
+        <tr><td>62</td><td>Aduana (honorario)</td><td>Solo objetos oficiales con el escudo.</td></tr>
+        <tr><td>63</td><td>Proceso penal (honorario)</td><td>Con el respeto debido a su cargo.</td></tr>
+        <tr><td>64</td><td>Protección personal (honorario)</td><td>Según su carácter oficial.</td></tr>
+        <tr><td>65</td><td>Registro de extranjeros (honorario)</td><td>Exento salvo lucro privado.</td></tr>
+        <tr><td>66</td><td>Impuestos (honorario)</td><td>Exento solo sobre lo consular.</td></tr>
+        <tr><td>67</td><td>Cargas (honorario)</td><td>Exento, igual que los de carrera.</td></tr>
+        <tr><td>68</td><td>Carácter opcional</td><td>Cada país decide si tiene cónsules honorarios.</td></tr>
+        <tr><td>69</td><td>Agentes sin jefe formal</td><td>Se arregla de común acuerdo.</td></tr>
+        <tr><td>70</td><td>Embajadas haciendo lo consular</td><td>Con aviso; ese personal sigue con régimen diplomático, no el de esta Convención.</td></tr>
+        <tr><td>71</td><td>Cónsul nacional del anfitrión</td><td>Privilegios reducidos, salvo que el anfitrión dé más.</td></tr>
+        <tr><td>72</td><td>No discriminación</td><td>Reciprocidad no es discriminar.</td></tr>
+        <tr><td>73</td><td>Relación con otros tratados</td><td>No los reemplaza ni impide otros acuerdos.</td></tr>
+        <tr><td>74</td><td>Firma</td><td>Quiénes y hasta cuándo pudieron firmar.</td></tr>
+        <tr><td>75</td><td>Ratificación</td><td>Cómo un país confirma su obligación.</td></tr>
+        <tr><td>76</td><td>Adhesión</td><td>Cómo se suma un país tardío.</td></tr>
+        <tr><td>77</td><td>Entrada en vigor</td><td>Desde cuándo rige el tratado.</td></tr>
+        <tr><td>78</td><td>Notificaciones</td><td>La ONU avisa a todos los países.</td></tr>
+        <tr><td>79</td><td>Textos auténticos</td><td>Chino, español, francés, inglés y ruso: todos oficiales.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ CLAVES ============ -->
+<section id="claves">
+  <p class="kicker">Atención</p>
+  <h2>Puntos que más se preguntan</h2>
+  <ul>
+    <li>La base de todo: los privilegios existen por <strong>necesidad funcional</strong>, no como regalo a la
+    persona (Preámbulo).</li>
+    <li><strong>Miembros de la oficina</strong> (con jefe) vs. <strong>miembros del personal</strong> (sin jefe)
+    (Art. 1).</li>
+    <li>Romper relaciones diplomáticas <strong>no rompe</strong> las consulares (Art. 2).</li>
+    <li>Los <strong>tres datos</strong> que aprueba el anfitrión al abrir una oficina: sede, clase y
+    circunscripción (Art. 4).</li>
+    <li>Las trece funciones del Art. 5, sobre todo la frase "por medios lícitos" (letra c).</li>
+    <li>Art. 7 (en un tercer Estado) vs. Art. 8 (por cuenta de un tercer Estado).</li>
+    <li>El <strong>exequátur se puede negar sin explicar</strong> por qué (Art. 12).</li>
+    <li>Art. 16 (precedencia entre oficinas) vs. Art. 21 (precedencia dentro de una oficina).</li>
+    <li><strong>Persona non grata</strong>: el anfitrión no necesita justificar su decisión (Art. 23).</li>
+    <li>El <strong>Art. 36</strong> es el más citado en la práctica real: derecho de un detenido extranjero a que
+    avisen a su consulado.</li>
+    <li>La <strong>inviolabilidad de los locales</strong> (Art. 31) y de los <strong>archivos</strong> (Art. 33)
+    son casi absolutas.</li>
+    <li>La <strong>inmunidad de jurisdicción</strong> del cónsul de carrera (Art. 43) es solo por actos
+    oficiales, con dos excepciones civiles puntuales.</li>
+    <li>Los cónsules honorarios tienen <strong>todo más limitado</strong>: sus privilegios dependen de que el
+    local o los bienes sean del Estado que envía, no de ellos (Arts. 60 y 62).</li>
+    <li>El Capítulo III es <strong>optativo</strong>: nadie está obligado a tener cónsules honorarios (Art. 68).</li>
+    <li>El tratado vale igual en <strong>cinco idiomas</strong> oficiales (Art. 79).</li>
+  </ul>
+</section>
+
+<hr class="hr">
+
+<!-- ============ PREGUNTAS ============ -->
+<section id="preguntas">
+  <p class="kicker">Autoevaluación</p>
+  <h2>Preguntas de repaso</h2>
+
+  <div class="qa">
+    <p class="q">¿Por qué existen los privilegios e inmunidades consulares?</p>
+    <p class="a"><b>Respuesta</b>Por necesidad funcional: para que la oficina pueda trabajar bien, no para
+    beneficiar a la persona (Preámbulo).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Cuáles son las cuatro clases de oficinas consulares?</p>
+    <p class="a"><b>Respuesta</b>Consulado general, consulado, viceconsulado y agencia consular (Art. 1),
+    correspondidas con las cuatro clases de jefes del Art. 9.</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">Si dos Estados rompen relaciones diplomáticas, ¿se rompen también las consulares?</p>
+    <p class="a"><b>Respuesta</b>No, salvo que lo digan expresamente (Art. 2).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Qué tres datos de una oficina consular necesitan aprobación del Estado receptor?</p>
+    <p class="a"><b>Respuesta</b>Sede, clase y circunscripción (Art. 4).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Cuál es la función consular "madre"?</p>
+    <p class="a"><b>Respuesta</b>Proteger los intereses del Estado que envía y de sus nacionales (Art. 5, letra
+    a).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Cuál es la diferencia entre los artículos 7 y 8?</p>
+    <p class="a"><b>Respuesta</b>El Art. 7 es atender otro país desde el mismo consulado; el Art. 8 es trabajar
+    en nombre de un tercer Estado sin moverse del país anfitrión.</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Qué es el exequátur y puede negarse sin motivo?</p>
+    <p class="a"><b>Respuesta</b>Es la autorización del Estado receptor para que el jefe empiece a trabajar. Sí,
+    puede negarse sin dar explicaciones (Art. 12).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Cómo se ordena la precedencia entre jefes de distintas oficinas?</p>
+    <p class="a"><b>Respuesta</b>Por la fecha del exequátur (o de la admisión provisional); en empate, por la
+    fecha de la carta patente; interinos después de titulares, honorarios después de los de carrera (Art. 16).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Un cónsul que hace actos diplomáticos gana inmunidad diplomática?</p>
+    <p class="a"><b>Respuesta</b>No, sigue siendo cónsul (Art. 17).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Qué es declarar a alguien "persona non grata"?</p>
+    <p class="a"><b>Respuesta</b>Es la facultad del Estado receptor de rechazar a un funcionario consular sin dar
+    motivos; el Estado que envía debe retirarlo (Art. 23).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Qué debe hacer el Estado receptor si arresta a un extranjero y este lo pide?</p>
+    <p class="a"><b>Respuesta</b>Avisar al consulado de su país, y dejar que el cónsul lo visite, hable con él y
+    lo ayude a conseguir defensa legal (Art. 36).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Puede el Estado receptor entrar al local consular sin permiso?</p>
+    <p class="a"><b>Respuesta</b>No, salvo un incendio u otro siniestro que exija medidas urgentes (Art. 31).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Están protegidos los archivos consulares en todo momento?</p>
+    <p class="a"><b>Respuesta</b>Sí, sin excepción, en cualquier lugar donde estén (Art. 33).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Qué tipo de inmunidad tiene el cónsul de carrera ante los tribunales locales?</p>
+    <p class="a"><b>Respuesta</b>Inmunidad de jurisdicción por actos de su función, con excepciones para ciertos
+    juicios civiles (contratos personales y accidentes de tránsito) (Art. 43).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Puede el propio cónsul renunciar a sus privilegios?</p>
+    <p class="a"><b>Respuesta</b>No; solo puede hacerlo el Estado que envía, por escrito (Art. 45).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Puede un cónsul de carrera tener un negocio privado con fines de lucro?</p>
+    <p class="a"><b>Respuesta</b>No; si lo hace, pierde los privilegios del Capítulo II (Art. 57).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Qué diferencia hay entre los privilegios del Capítulo II y los del Capítulo III?</p>
+    <p class="a"><b>Respuesta</b>El Capítulo II (cónsules de carrera) da una protección más amplia; el Capítulo
+    III (cónsules honorarios) da una versión reducida, condicionada muchas veces a que el local o los bienes sean
+    propiedad del Estado que envía (Arts. 58 a 68).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Es obligatorio para un país tener cónsules honorarios?</p>
+    <p class="a"><b>Respuesta</b>No, es una institución optativa (Art. 68).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿Qué pasa si un funcionario consular es nacional del propio Estado receptor?</p>
+    <p class="a"><b>Respuesta</b>Tiene privilegios reducidos: solo inmunidad por actos oficiales y protección
+    contra detención salvo delito grave, más lo que el receptor quiera darle de más (Art. 71).</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">¿En qué idiomas es igualmente auténtico el texto de la Convención?</p>
+    <p class="a"><b>Respuesta</b>Chino, español, francés, inglés y ruso (Art. 79).</p>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ============ BLOQUE 2: LEY 4033 ============ -->
+<section id="ley4033" class="page-break">
+  <p class="kicker">Bloque 2 — Paraguay</p>
+  <h2>Ley 4033/10 — Tabla para legalizar un documento</h2>
+  <p class="lead">La Ley N.º 4033/2010 ("Del Arancel Consular") es la norma paraguaya que fija <mark>cuánto
+  cobran los consulados</mark> por sus trámites, entre ellos la legalización de documentos (que un documento
+  extranjero valga en Paraguay, o que uno paraguayo valga en el exterior).</p>
+
+  <h3>Tres palabras que se confunden todo el tiempo: legalización, visación y expedición</h3>
+  <p>Antes de entrar a la tabla conviene tener clara la diferencia, porque son tres actos consulares distintos y
+  cada uno se usa en un momento distinto del trámite:</p>
+
+  <ul class="fx">
+    <li><span class="tag">1</span><span class="txt"><b>Legalización</b><span><mark>Certifica que una firma y un sello de un documento ya existente son auténticos</mark>, para que ese documento tenga validez legal en otro país. El cónsul no crea nada nuevo: solo confirma "sí, esta firma es real y de quien dice ser". Se usa, por ejemplo, para que un título universitario paraguayo sirva en el exterior, o para que un poder notarial extranjero valga en Paraguay.</span></span></li>
+    <li><span class="tag">2</span><span class="txt"><b>Visación</b><span>Es prácticamente el mismo acto que la legalización —certificar la autenticidad de una firma o sello—, pero en la práctica consular se usa ese nombre sobre todo para <mark>documentos comerciales y de transporte</mark>: facturas comerciales, listas de empaque, certificados de origen, conocimientos de embarque. Se "visa" la factura de una exportación para que la aduana del país destino la acepte como válida.</span></span></li>
+    <li><span class="tag">3</span><span class="txt"><b>Expedición</b><span>Es distinta a las dos anteriores: acá el consulado <mark>emite un documento nuevo</mark>, no valida uno que ya existe. Por ejemplo, expedir un pasaporte, una cédula, una partida o un certificado de nacionalidad. El cónsul es quien crea el documento desde cero, con su propia firma y sello.</span></span></li>
+  </ul>
+
+  <div class="box">
+    <span class="box-label">Regla simple para no confundirlas</span>
+    <p><strong>Legalización</strong> y <strong>visación</strong> responden a la pregunta "¿esta firma es
+    auténtica?" sobre un papel que <em>ya existe</em> (la primera para documentos civiles, de estudio o poderes;
+    la segunda, sobre todo, para documentos de comercio exterior). <strong>Expedición</strong> responde a la
+    pregunta "¿me das este documento?" sobre un papel que <em>todavía no existe</em> y que el propio consulado
+    tiene que crear. Si el documento ya está firmado por otro y vos solo necesitás que valga en otro país, es
+    legalización o visación; si necesitás que el consulado te lo extienda por primera vez, es expedición.</p>
+  </div>
+
+  <div class="box">
+    <span class="box-label">Fuente de esta tabla</span>
+    <p>Los datos de abajo están tomados y verificados directamente contra el <strong>texto oficial de la Ley
+    4033/2010</strong> (Título II, "Tabla Arancelaria", Art. 11), sancionada el 17/06/2010 y promulgada el
+    14/07/2010. Cada fila indica el número de <strong>párrafo</strong> tal como figura en la ley, para que puedas
+    citarlo igual que en el arancel original.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Párrafo</th><th>Qué se legaliza</th><th>Monto (USD)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>53</td><td>Constancia a favor de sociedad comercial extranjera constituida conforme a las leyes de su país.</td><td>150,00</td></tr>
+        <tr><td>54</td><td>Documento original de transferencia de marca de fábrica, de comercio o patente.</td><td>120,00</td></tr>
+        <tr><td>55</td><td>Copia del documento del párrafo 54.</td><td>30,00</td></tr>
+        <tr><td>56</td><td>Autorización original para prorrogar o renovar marca o patente.</td><td>120,00</td></tr>
+        <tr><td>57</td><td>Copia del documento del párrafo 56.</td><td>30,00</td></tr>
+        <tr><td>58</td><td>Fórmula original de un producto químico, con fines comerciales.</td><td>80,00</td></tr>
+        <tr><td>59</td><td>Copia del documento del párrafo 58.</td><td>30,00</td></tr>
+        <tr><td>64</td><td>Sentencia judicial extranjera sobre estado civil, inscripta en los libros consulares.</td><td>45,00</td></tr>
+        <tr><td>65 a</td><td>Certificado de nacimiento no expedido por el consulado.</td><td>15,00</td></tr>
+        <tr><td>65 b</td><td>Certificado de matrimonio no expedido por el consulado.</td><td>15,00</td></tr>
+        <tr><td>65 c</td><td>Certificado de defunción no expedido por el consulado.</td><td>15,00</td></tr>
+        <tr><td>68</td><td>Certificado de antecedentes policiales, judiciales o equivalentes.</td><td>20,00</td></tr>
+        <tr><td>72</td><td>Certificado, diploma o programa de enseñanza secundaria.</td><td>10,00</td></tr>
+        <tr><td>73</td><td>Certificado, diploma o programa de enseñanza universitaria.</td><td>20,00</td></tr>
+        <tr><td>74</td><td>Firma de cualquier otro documento no enumerado en el arancel.</td><td>20,00</td></tr>
+        <tr><td>80</td><td>Poder general otorgado ante escribano.</td><td>100,00</td></tr>
+        <tr><td>81</td><td>Poder especial otorgado ante escribano.</td><td>80,00</td></tr>
+        <tr><td>82</td><td>Testimonio de escritura de constitución de sociedad comercial.</td><td>150,00</td></tr>
+        <tr><td>83</td><td>Testimonio de escritura de constitución de sociedad civil sin fines de lucro.</td><td>30,00</td></tr>
+        <tr><td>84</td><td>Testimonio de cualquier otro acto jurídico no enumerado en el arancel.</td><td>40,00</td></tr>
+        <tr><td>78</td><td>Derechos Arancelarios Especiales: se suma a <strong>toda</strong> solicitud de legalización, visado o actuación consular, como gasto administrativo fijo (Cap. X).</td><td>15,00</td></tr>
+        <tr><td>79</td><td>Cada documento, copia o actuación adicional del párrafo 78, presentada el mismo día.</td><td>5,00</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box">
+    <span class="box-label">Nota importante sobre certificados de estudio</span>
+    <p>La legalización de certificados, diplomas o programas de <strong>enseñanza primaria es gratuita</strong>
+    (Nota 21 de la ley); por eso no tiene fila propia con monto.</p>
+  </div>
+
+  <div class="box">
+    <span class="box-label">Cómo se arma el costo final de una legalización</span>
+    <p>Son <strong>dos líneas sumadas</strong>: el párrafo específico del documento (por ejemplo, párrafo 80 para
+    un poder general) <strong>más</strong> el párrafo 78 de gastos administrativos, que se cobra siempre, aparte,
+    en cada trámite (Art. 11, Cap. X). Si además pedís copias o actuaciones adicionales el mismo día, se suma el
+    párrafo 79.</p>
+  </div>
+
+  <div class="box warn">
+    <span class="box-label">Un detalle que conviene tener presente</span>
+    <p>Según lo publicado en medios paraguayos, la <strong>Ley 7196/2023</strong> derogó más de 50 aranceles de la
+    Ley 4033, sobre todo los de los capítulos de <strong>navegación, aeronavegación, transporte y operaciones de
+    importación</strong> (comercio exterior), para facilitar el comercio internacional. Los párrafos de esta tabla
+    —legalización de poderes, estudios, documentos civiles, antecedentes y actos jurídicos— pertenecen a capítulos
+    distintos de los que esa reforma modificó, así que deberían seguir vigentes con estos montos; aun así, como no
+    tuve a la vista el texto de la Ley 7196 para confirmarlo artículo por artículo, conviene verificarlo en el
+    consulado antes de pagar un trámite real.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Guía de estudio — Convención de Viena sobre Relaciones Consulares (1963), artículos 1 al 79, y Ley 4033/10
+  de Paraguay (Arancel Consular). Material de repaso en lenguaje simplificado; para citar en el examen o pagar un
+  trámite real, siempre conviene verificar el texto oficial vigente.</p>
+</footer>
+
+<button id="print-btn" class="no-print" type="button">Imprimir / PDF A4</button>
+
+<button id="tts-toggle" class="no-print" type="button">🔊 Escuchar</button>
+<div id="tts-bar" class="no-print" hidden>
+  <button id="tts-prev" type="button" aria-label="Bloque anterior">⏮</button>
+  <button id="tts-play" type="button" aria-label="Reproducir">▶</button>
+  <button id="tts-next" type="button" aria-label="Bloque siguiente">⏭</button>
+  <div id="tts-info">
+    <span id="tts-label">—</span>
+    <span id="tts-count">0 / 0</span>
+  </div>
+  <button id="tts-rate" type="button" aria-label="Velocidad de lectura">1×</button>
+  <button id="tts-close" type="button" aria-label="Cerrar lector">✕</button>
+</div>
+
+<script>
+  // Barra de progreso de lectura
+  var bar = document.getElementById('progress');
+  function updateProgress(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', updateProgress, { passive:true });
+  updateProgress();
+
+  // Tiempo estimado de lectura
+  var words = document.querySelector('main').innerText.trim().split(/\s+/).length;
+  document.getElementById('reading-time').textContent =
+    Math.max(1, Math.round(words / 200)) + ' min de lectura';
+
+  // Botón de impresión
+  document.getElementById('print-btn').addEventListener('click', function(){ window.print(); });
+
+  // ---------- Lector por bloques (texto a voz) ----------
+  (function(){
+    if (!('speechSynthesis' in window)) {
+      var t = document.getElementById('tts-toggle');
+      if (t) t.hidden = true;
+      return;
+    }
+    var synth = window.speechSynthesis;
+    var chosenVoice = null;
+    // Se prefiere una voz latinoamericana; si no hay, cualquier voz en español.
+    var VOCES_PREFERIDAS = ['es-py', 'es-ar', 'es-419', 'es-mx', 'es-us', 'es-co', 'es-cl', 'es-uy'];
+    function loadVoices(){
+      var enEspanol = synth.getVoices().filter(function(v){ return /^es/i.test(v.lang); });
+      chosenVoice = null;
+      for (var i = 0; i < VOCES_PREFERIDAS.length && !chosenVoice; i++) {
+        var buscada = VOCES_PREFERIDAS[i];
+        chosenVoice = enEspanol.filter(function(v){
+          return v.lang.toLowerCase().replace('_', '-') === buscada;
+        })[0] || null;
+      }
+      if (!chosenVoice) chosenVoice = enEspanol[0] || null;
+    }
+    loadVoices();
+    if ('onvoiceschanged' in synth) synth.addEventListener('voiceschanged', loadVoices);
+
+    // Abreviaturas frecuentes en el texto: el punto que las sigue no termina la oración.
+    var ABREVIATURAS = ['art', 'arts', 'inc', 'incs', 'nro', 'nros', 'num', 'núm', 'pag', 'pág',
+                        'cap', 'caps', 'sec', 'secs', 'parr', 'párr', 'etc', 'ej', 'aprox',
+                        'sr', 'sra', 'dr', 'dra', 'lic', 'ing', 'vs', 'ss', 'n'];
+    var LARGO_MINIMO = 25;
+
+    function cierraOracion(seg){
+      var s = seg.replace(/[)\]"'”»]+$/, '');
+      var m = s.match(/([A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+)\.$/);
+      if (m) {
+        if (m[1].length === 1) return false;                              // inicial suelta: "J."
+        if (ABREVIATURAS.indexOf(m[1].toLowerCase()) !== -1) return false; // "Art.", "arts.", "pág."
+      }
+      return true;
+    }
+
+    function sentencesFrom(text){
+      var limpio = text.replace(/\s+/g, ' ').trim();
+      if (!limpio) return [];
+      var parts = limpio.split(/([.!?]+[)"']*\s+)/);
+      var out = [];
+      var buffer = '';
+      for (var i = 0; i < parts.length; i += 2) {
+        buffer += (parts[i] || '') + (parts[i + 1] || '');
+        var seg = buffer.trim();
+        if (!seg) { buffer = ''; continue; }
+        // Se sigue acumulando si el corte cae tras una abreviatura o deja un fragmento muy corto.
+        if (!cierraOracion(seg) || seg.length < LARGO_MINIMO) continue;
+        out.push(seg);
+        buffer = '';
+      }
+      if (buffer.trim()) out.push(buffer.trim());
+      if (!out.length) out.push(limpio);
+      return out;
+    }
+
+    function buildBlocks(){
+      var blocks = [];
+      document.querySelectorAll('main > section').forEach(function(section){
+        var h2 = section.querySelector(':scope > h2');
+        var title = h2 ? h2.textContent.trim() : section.id;
+        var qaItems = section.querySelectorAll(':scope > .qa');
+        if (qaItems.length) {
+          var introEls = Array.prototype.filter.call(section.children, function(el){ return !el.classList.contains('qa'); });
+          var introText = introEls.map(function(el){ return el.innerText; }).join('\n').trim();
+          if (introText) blocks.push({ label: title, el: h2 || section, text: introText });
+          qaItems.forEach(function(qa, i){
+            blocks.push({ label: title + ' — pregunta ' + (i + 1), el: qa.querySelector('.q') || qa, text: qa.innerText });
+          });
+        } else {
+          blocks.push({ label: title, el: h2 || section, text: section.innerText });
+        }
+      });
+      return blocks;
+    }
+
+    var blocks = [];
+    var state = { index: -1, queue: [], qi: 0, playing: false };
+    var RATES = [0.85, 1, 1.15, 1.3];
+    var rateIdx = 1;
+
+    var bar = document.getElementById('tts-bar');
+    var btnToggle = document.getElementById('tts-toggle');
+    var btnPlay = document.getElementById('tts-play');
+    var btnPrev = document.getElementById('tts-prev');
+    var btnNext = document.getElementById('tts-next');
+    var btnRate = document.getElementById('tts-rate');
+    var btnClose = document.getElementById('tts-close');
+    var elLabel = document.getElementById('tts-label');
+    var elCount = document.getElementById('tts-count');
+
+    function clearHighlight(){
+      document.querySelectorAll('.tts-current').forEach(function(el){ el.classList.remove('tts-current'); });
+    }
+
+    function updateUI(){
+      if (state.index < 0) {
+        elLabel.textContent = '—';
+        elCount.textContent = '0 / ' + blocks.length;
+        btnPlay.textContent = '▶';
+        return;
+      }
+      elLabel.textContent = blocks[state.index].label;
+      elCount.textContent = (state.index + 1) + ' / ' + blocks.length;
+      btnPlay.textContent = state.playing ? '⏸' : '▶';
+      btnPlay.setAttribute('aria-label', state.playing ? 'Pausar' : 'Reproducir');
+    }
+
+    var gen = 0;
+    function cancelSpeech(){ gen++; synth.cancel(); }
+
+    // Detiene la lectura pero deja la barra abierta: la clase tts-open acompaña a la barra,
+    // no a la reproducción, para que los botones flotantes no queden tapados por ella.
+    function stopAll(){
+      cancelSpeech();
+      clearHighlight();
+      state.playing = false;
+      updateUI();
+    }
+
+    function closeBar(){
+      stopAll();
+      state.index = -1;
+      bar.hidden = true;
+      document.body.classList.remove('tts-open');
+      updateUI();
+    }
+
+    function speakNext(){
+      var myGen = gen;
+      if (state.qi >= state.queue.length) {
+        if (state.index < blocks.length - 1) playBlock(state.index + 1);
+        else stopAll();
+        return;
+      }
+      var u = new SpeechSynthesisUtterance(state.queue[state.qi]);
+      u.lang = chosenVoice ? chosenVoice.lang : 'es-ES';
+      if (chosenVoice) u.voice = chosenVoice;
+      u.rate = RATES[rateIdx];
+      u.onend = function(){ if (myGen !== gen) return; state.qi++; speakNext(); };
+      u.onerror = function(){ if (myGen !== gen) return; state.qi++; speakNext(); };
+      synth.speak(u);
+    }
+
+    function playBlock(i){
+      if (!blocks.length) blocks = buildBlocks();
+      if (i < 0 || i >= blocks.length) return;
+      cancelSpeech();
+      clearHighlight();
+      state.index = i;
+      state.queue = sentencesFrom(blocks[i].text);
+      state.qi = 0;
+      state.playing = true;
+      bar.hidden = false;
+      document.body.classList.add('tts-open');
+      blocks[i].el.classList.add('tts-current');
+      blocks[i].el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      updateUI();
+      speakNext();
+    }
+
+    function togglePlayPause(){
+      if (state.index < 0) { playBlock(0); return; }
+      if (synth.speaking && !synth.paused) { synth.pause(); state.playing = false; }
+      else if (synth.paused) { synth.resume(); state.playing = true; }
+      else { playBlock(state.index); return; }
+      updateUI();
+    }
+
+    btnPlay.addEventListener('click', togglePlayPause);
+    btnPrev.addEventListener('click', function(){ if (state.index > 0) playBlock(state.index - 1); });
+    btnNext.addEventListener('click', function(){ if (state.index < blocks.length - 1) playBlock(state.index + 1); else stopAll(); });
+    btnRate.addEventListener('click', function(){
+      rateIdx = (rateIdx + 1) % RATES.length;
+      btnRate.textContent = RATES[rateIdx] + '×';
+      // synth.speaking sigue en true durante la pausa: si está pausado no se reanuda,
+      // la velocidad nueva entra al reanudar. Solo se reinicia si está sonando.
+      if (state.playing && synth.speaking && !synth.paused) { cancelSpeech(); speakNext(); }
+    });
+    btnClose.addEventListener('click', closeBar);
+    // Chrome puede seguir hablando después de dejar la página.
+    window.addEventListener('pagehide', function(){ synth.cancel(); });
+    btnToggle.addEventListener('click', function(){
+      if (bar.hidden) playBlock(state.index >= 0 ? state.index : 0);
+      else closeBar();
+    });
+
+    // Íconos de "escuchar este bloque" junto a cada título
+    blocks = buildBlocks();
+    blocks.forEach(function(b, i){
+      var target = b.el;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'tts-jump no-print';
+      btn.setAttribute('aria-label', 'Escuchar: ' + b.label);
+      btn.textContent = '🔊';
+      btn.addEventListener('click', function(e){ e.stopPropagation(); playBlock(i); });
+      target.appendChild(btn);
+    });
+  })();
+</script>
+
+</body>
+</html>
